@@ -1,0 +1,9 @@
+# The storefront repo holds docs + Releases only — never source or build output.
+*.exe
+*.zip
+*.7z
+*.neonmem
+*.neonmem.json
+node_modules/
+dist/
+distribute/

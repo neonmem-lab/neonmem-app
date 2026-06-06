@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📧 Support
+    url: mailto:support@neonmem.com
+    about: Prefer email? Reach support directly.
+  - name: 💼 Commercial / sales
+    url: mailto:sales@neonmem.com
+    about: Licensing for business or team use.

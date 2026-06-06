@@ -1,0 +1,52 @@
+name: "🐞 Bug report"
+description: Something in Neonmem isn't working right
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Neonmem (public beta). Please don't paste secrets,
+        tokens, or private code in logs.
+  - type: input
+    id: version
+    attributes:
+      label: Neonmem version
+      placeholder: "e.g. 1.0.0 (from the installer or the app's About)"
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Which agent
+      options: ["Claude Code", "GitHub Copilot / VS Code (experimental)", "Just the app / CLI", "Other"]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What went wrong, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (optional)
+      description: "Run `neonmem logs` and paste the relevant tail (scrub anything sensitive)."
+      render: shell
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "e.g. Windows 11 23H2"

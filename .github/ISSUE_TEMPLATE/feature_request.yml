@@ -1,0 +1,17 @@
+name: "💡 Feature request"
+description: Suggest an idea, an agent/platform to support, or an improvement
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+      description: The problem you're trying to solve, and your idea for it.
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent or platform (if relevant)
+      placeholder: "e.g. Cursor, Cline, macOS, Linux"
