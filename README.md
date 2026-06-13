@@ -1,10 +1,12 @@
 <h1 align="center">Neonmem</h1>
 
-<p align="center"><strong>A living memory for your AI agent.</strong></p>
+<p align="center"><strong>A living memory <em>cartridge</em> for your AI agent.</strong></p>
 
 <p align="center">
-So it learns you and your project and works like a colleague who actually knows you —
-remembering every decision, idea and dead-end. Local · private · yours.
+Not a vector database — a self-contained <strong>.neonmem cartridge</strong> that carries a
+reasoning graph, a comprehension layer that <em>understands</em> your project, and a small
+model trained on your own memory. So your agent learns you and works like a colleague who
+actually knows you — remembering every decision, plan, idea and dead-end. Local · private · yours.
 </p>
 
 <p align="center">
@@ -21,23 +23,38 @@ remembering every decision, idea and dead-end. Local · private · yours.
   <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
 </p>
 
-> **Public beta (v0.7).** Windows only for now; macOS & Linux are on the way.
+> **Public beta (v0.9).** Windows only for now; macOS & Linux are on the way.
 
 ---
 
 ## What it is
 
-Your agent forgets your project between sessions. Neonmem gives it a **living,
-dynamic memory** — it grows as you work, holds the *why* behind decisions, and
-turns the assistant into a colleague who's genuinely been there with you.
+Your agent forgets your project between sessions. Neonmem gives it a **living memory
+cartridge** — one `.neonmem` file that grows as you work, holds the *why* behind every
+decision, and even knows *where you're going*. It's not a vector database; it's a small
+mind for your project, and you can watch it form in 3D.
 
-- 🧠 **A real graph, not a flat log** — decisions, observations, rules and how they connect.
+**Three things in one cartridge:**
+
+- 🕸️ **A reasoning graph** — 14 node types and typed edges: observations, decisions,
+  dead-ends, rules, and **plans** for where you're heading. The *how* and *why*, not a flat log.
+- 🧩 **A comprehension layer** — it clusters everything into **subsystems** and a **resume
+  skeleton**, so a fresh session understands the whole project at once instead of scrolling back.
+- 🧠 **Models built in** — small, **self-built (no third-party LLM)** models, trained on *your*
+  memory, that rank what matters, sense tone, and type what's captured. They travel inside the file.
+
+<p align="center">
+  <img src="assets/brain-subsystems.png" alt="A Neonmem memory cartridge, coloured by self-organised subsystems around a glowing comprehension core" width="620">
+</p>
+
+**What that gives you:**
+
 - 🚫 **Remembers dead-ends** — failed approaches stay recorded, so they aren't re-suggested.
-- 💬 **Debates & resolutions** — the reasoning, not just the verdict.
+- 🧭 **Knows the plan** — immediate next-steps and long-running goals, kept front-of-mind.
 - 🌙 **Dreams** — a consolidation pass that decays noise and keeps what matters.
 - 🕰️ **Time-travel** — "what did we do three days ago?"
-- 👁️ **You can see it** — a real-time 3D view of memory forming, recalling, consolidating.
-- 🔒 **Local & private** — offline, no cloud, no API cost; memory is a portable file on your machine.
+- 👁️ **You can see it** — a real-time 3D brain of memory forming, recalling, consolidating.
+- 🔒 **Local & private** — offline, no cloud, no API cost; the cartridge is a portable file you own.
 - 🛡️ **Tamper-proof** — binary and agent-write-only by design.
 
 It isn't just for code: the same agent can run a tricky DevOps migration or help
@@ -63,7 +80,7 @@ you write a screenplay — and Neonmem remembers all of it. See the full
 Uninstall cleanly from **Add/Remove Programs** (it un-registers itself and keeps
 your memory). Misbehaving? `neonmem disable` turns it off without uninstalling.
 
-See [RELEASE-NOTES-0.7.md](RELEASE-NOTES-0.7.md) for what's in this build.
+See [RELEASE-NOTES-0.9.md](RELEASE-NOTES-0.9.md) for what's in this build.
 
 ## Report a bug
 
