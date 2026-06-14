@@ -34,7 +34,7 @@ Code (or point it at your install) and registers automatically. Optionally tick
 
 ## Report a bug
 Logs: run `neonmem logs` (or `neonmem logs --path`). File it at
-https://github.com/stmedvid-ailab/neonmem-app/issues or email support@neonmem.com.
+https://github.com/neonmem-lab/neonmem-app/issues or email support@neonmem.com.
 Full instructions: https://neonmem.com/report
 
 ## License

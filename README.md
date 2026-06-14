@@ -10,7 +10,9 @@ actually knows you — remembering every decision, plan, idea and dead-end. Loca
 </p>
 
 <p align="center">
-  <a href="https://github.com/stmedvid-ailab/neonmem-app/releases/latest"><strong>⬇ Download for Windows</strong></a>
+  <a href="https://github.com/neonmem-lab/neonmem-app/releases/latest"><strong>⬇ Download for Windows</strong></a>
+  ·
+  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/Neonmem-0.9.2-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
   ·
   <a href="https://neonmem.com">neonmem.com</a>
   ·
@@ -23,7 +25,7 @@ actually knows you — remembering every decision, plan, idea and dead-end. Loca
   <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
 </p>
 
-> **Public beta (v0.9).** Windows only for now; macOS & Linux are on the way.
+> **Public beta (v0.9.2).** Windows **and Linux** (AppImage) — macOS is on the way.
 
 ---
 
@@ -71,7 +73,7 @@ you write a screenplay — and Neonmem remembers all of it. See the full
 
 ## Install
 
-1. **[Download the installer](https://github.com/stmedvid-ailab/neonmem-app/releases/latest)** (Windows x64).
+1. **[Download the installer](https://github.com/neonmem-lab/neonmem-app/releases/latest)** (Windows x64).
 2. Run it — it detects Claude Code (or point it at your install) and registers
    automatically. Optionally tick **GitHub Copilot (experimental)** for VS Code.
 3. Open Claude Code and just work — Neonmem loads your memory at session start.
@@ -80,13 +82,18 @@ you write a screenplay — and Neonmem remembers all of it. See the full
 Uninstall cleanly from **Add/Remove Programs** (it un-registers itself and keeps
 your memory). Misbehaving? `neonmem disable` turns it off without uninstalling.
 
-See [RELEASE-NOTES-0.9.md](RELEASE-NOTES-0.9.md) for what's in this build.
+**On Linux:** grab the
+[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/Neonmem-0.9.2-x86_64.AppImage),
+`chmod +x` it, and run — no install, no gatekeeper prompt. (Or the
+[.tar.gz](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/neonmem-0.9.2-linux.tar.gz).)
+
+See [RELEASE-NOTES-0.9.2.md](RELEASE-NOTES-0.9.2.md) for what's in this build.
 
 ## Report a bug
 
 Full instructions (including where to find your logs) are at
 **[neonmem.com/report](https://neonmem.com/report)** — or
-[open an issue](https://github.com/stmedvid-ailab/neonmem-app/issues/new/choose),
+[open an issue](https://github.com/neonmem-lab/neonmem-app/issues/new/choose),
 or email **support@neonmem.com**.
 
 ## License
