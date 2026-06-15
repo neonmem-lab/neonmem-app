@@ -12,7 +12,7 @@ actually knows you — remembering every decision, plan, idea and dead-end. Loca
 <p align="center">
   <a href="https://github.com/neonmem-lab/neonmem-app/releases/latest"><strong>⬇ Download for Windows</strong></a>
   ·
-  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/Neonmem-0.9.2-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
+  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.3/Neonmem-0.9.3-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
   ·
   <a href="https://neonmem.com">neonmem.com</a>
   ·
@@ -25,7 +25,7 @@ actually knows you — remembering every decision, plan, idea and dead-end. Loca
   <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
 </p>
 
-> **Public beta (v0.9.2).** Windows **and Linux** (AppImage) — macOS is on the way.
+> **Public beta (v0.9.3).** Windows **and Linux** (AppImage) — macOS is on the way.
 
 ---
 
@@ -83,11 +83,11 @@ Uninstall cleanly from **Add/Remove Programs** (it un-registers itself and keeps
 your memory). Misbehaving? `neonmem disable` turns it off without uninstalling.
 
 **On Linux:** grab the
-[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/Neonmem-0.9.2-x86_64.AppImage),
+[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.3/Neonmem-0.9.3-x86_64.AppImage),
 `chmod +x` it, and run — no install, no gatekeeper prompt. (Or the
-[.tar.gz](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.2/neonmem-0.9.2-linux.tar.gz).)
+[.tar.gz](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.3/neonmem-0.9.3-linux.tar.gz).)
 
-See [RELEASE-NOTES-0.9.2.md](RELEASE-NOTES-0.9.2.md) for what's in this build.
+See [RELEASE-NOTES-0.9.3.md](RELEASE-NOTES-0.9.3.md) for what's in this build.
 
 ## Report a bug
 
