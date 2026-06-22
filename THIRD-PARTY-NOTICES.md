@@ -19,11 +19,9 @@ components in `LICENSES.chromium.html` within the application directory.
 | Component | License | Project |
 |---|---|---|
 | NumPy | BSD-3-Clause | https://numpy.org |
-| model2vec | MIT | https://github.com/MinishLab/model2vec |
-| potion-retrieval-32M (model weights) | MIT | https://huggingface.co/minishlab/potion-retrieval-32M |
+| ONNX Runtime (default embedder inference) | MIT | https://github.com/microsoft/onnxruntime |
+| granite-embedding-30m-english (model weights, fp16 ONNX) | Apache-2.0 | https://huggingface.co/ibm-granite/granite-embedding-30m-english |
 | tokenizers | Apache-2.0 | https://github.com/huggingface/tokenizers |
-| safetensors | Apache-2.0 | https://github.com/huggingface/safetensors |
-| huggingface-hub | Apache-2.0 | https://github.com/huggingface/huggingface_hub |
 | faiss-cpu | MIT | https://github.com/facebookresearch/faiss |
 | FastMCP | Apache-2.0 | https://github.com/jlowin/fastmcp |
 | mcp (Model Context Protocol SDK) | MIT | https://github.com/modelcontextprotocol/python-sdk |
@@ -31,6 +29,20 @@ components in `LICENSES.chromium.html` within the application directory.
 | pydantic-core | MIT | https://github.com/pydantic/pydantic-core |
 | rich | MIT | https://github.com/Textualize/rich |
 | CPython runtime + standard library | PSF License Agreement | https://www.python.org |
+| cryptography (opt-in cartridge encryption) | Apache-2.0 / BSD-3-Clause | https://github.com/pyca/cryptography |
+
+## Offline AI importer (downloaded on first run to `~/.neonmem`)
+
+The importer's model and inference runtime are too large to bundle in the installer, so
+they are fetched once from the Neonmem release. They remain under their own licenses.
+
+| Component | License | Project |
+|---|---|---|
+| llama.cpp / ggml (inference engine + CPU backends) | MIT | https://github.com/ggml-org/llama.cpp |
+| IBM Granite 3.1 (base model, fine-tuned by Neonmem) | Apache-2.0 | https://huggingface.co/ibm-granite |
+| RaBitQ (1-bit vector quantization method) | Apache-2.0 | https://github.com/VectorDB-NTU/RaBitQ-Library |
+
+No Meta LLaMA code or model weights are used; "llama" in the engine name is historical.
 
 ## Node / Electron (bundled in the desktop app)
 
@@ -51,8 +63,8 @@ components in `LICENSES.chromium.html` within the application directory.
 
 ### License summaries
 
-- **MIT** and **BSD-3-Clause**: permissive; require the copyright notice and
-  permission notice to be retained — satisfied by this file and the bundled
+- **MIT**, **ISC** and **BSD-3-Clause**: permissive; require the copyright notice
+  and permission notice to be retained — satisfied by this file and the bundled
   package license texts.
 - **Apache-2.0**: permissive; requires retention of copyright, the license, and
   any NOTICE files — satisfied by the bundled package license/NOTICE files.

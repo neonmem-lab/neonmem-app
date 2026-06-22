@@ -4,15 +4,16 @@
 
 <p align="center">
 Not a vector database — a self-contained <strong>.neonmem cartridge</strong> that carries a
-reasoning graph, a comprehension layer that <em>understands</em> your project, and a small
-model trained on your own memory. So your agent learns you and works like a colleague who
-actually knows you — remembering every decision, plan, idea and dead-end. Local · private · yours.
+reasoning graph, a comprehension layer that <em>understands</em> your project, and a
+two-level importer: your docs &amp; code become a searchable, grounded knowledge pool, and
+your agent chats become the decisions and dead-ends worth keeping. So your agent answers
+from <em>your</em> sources instead of guessing. Local · private · yours.
 </p>
 
 <p align="center">
   <a href="https://github.com/neonmem-lab/neonmem-app/releases/latest"><strong>⬇ Download for Windows</strong></a>
   ·
-  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.6/Neonmem-0.9.6-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
+  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.7/Neonmem-0.9.7-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
   ·
   <a href="https://neonmem.com">neonmem.com</a>
   ·
@@ -25,7 +26,7 @@ actually knows you — remembering every decision, plan, idea and dead-end. Loca
   <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
 </p>
 
-> **Public beta (v0.9.6).** Windows **and Linux** (AppImage) — macOS is on the way.
+> **Public beta (v0.9.7).** New: a **two-level importer** (folders → searchable pool, agent chats → kept memories) and **grounded, offline recall** on IBM Granite-30M ONNX embeddings — no GPU, no cloud, no API key. Windows **and Linux** (AppImage) — macOS is on the way.
 
 ---
 
@@ -83,11 +84,10 @@ Uninstall cleanly from **Add/Remove Programs** (it un-registers itself and keeps
 your memory). Misbehaving? `neonmem disable` turns it off without uninstalling.
 
 **On Linux:** grab the
-[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.6/Neonmem-0.9.6-x86_64.AppImage),
-`chmod +x` it, and run — no install, no gatekeeper prompt. (Or the
-[.tar.gz](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.6/neonmem-0.9.6-linux.tar.gz).)
+[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.7/Neonmem-0.9.7-x86_64.AppImage),
+`chmod +x` it, and run — no install, no gatekeeper prompt.
 
-See [RELEASE-NOTES-0.9.6.md](RELEASE-NOTES-0.9.6.md) for what's in this build.
+See [RELEASE-NOTES-0.9.7.md](RELEASE-NOTES-0.9.7.md) for what's in this build.
 
 ## Report a bug
 
