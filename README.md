@@ -28,6 +28,10 @@ from <em>your</em> sources instead of guessing. Local · private · yours.
 
 > **Public beta (v0.9.7).** New: a **two-level importer** (folders → searchable pool, agent chats → kept memories) and **grounded, offline recall** on IBM Granite-30M ONNX embeddings — no GPU, no cloud, no API key. Windows **and Linux** (AppImage) — macOS is on the way.
 
+<p align="center">
+  <img src="assets/importer-two-level-0.9.7.png" alt="The Neonmem two-level importer: folders & files become a searchable pool, an agent chat becomes kept memories; result labels Facts loaded and Memories created" width="720">
+</p>
+
 ---
 
 ## What it is
