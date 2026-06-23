@@ -28,7 +28,7 @@ Neonmem now understands that "your stuff" comes in two shapes, and treats each c
 - Click-to-toggle tag chips, a smaller always-open legend, and a Collections view that groups the pool by source.
 
 ## Built on (all open, permissively licensed)
-- Embeddings: **IBM Granite-30M** (Apache-2.0) via **ONNX Runtime** (MIT). Vector search: **FAISS** (MIT). Agent integration: **Model Context Protocol**. **Zero Meta-LLaMA IP.** Full attributions ship with every download.
+- Embeddings: **IBM Granite-30M** (Apache-2.0) via **ONNX Runtime** (MIT). Vector search: **FAISS** (MIT). Agent integration: **Model Context Protocol**. Full attributions ship with every download.
 
 ## Platforms
 - Windows (signed installer + portable), Linux (AppImage), Windows Store build in the pipeline. macOS on the way.

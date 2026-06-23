@@ -26,7 +26,7 @@ from <em>your</em> sources instead of guessing. Local · private · yours.
   <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
 </p>
 
-> **Public beta (v0.9.7).** New: a **two-level importer** (folders → searchable pool, agent chats → kept memories) and **grounded, offline recall** on IBM Granite-30M ONNX embeddings — no GPU, no cloud, no API key. Windows **and Linux** (AppImage) — macOS is on the way.
+> **Public beta (v0.9.7).** New: a **two-level importer** (folders → searchable pool, agent chats → kept memories) and **grounded, offline recall** on IBM Granite-30M ONNX embeddings that run fully on your CPU. Windows **and Linux** (AppImage) — macOS is on the way.
 
 <p align="center">
   <img src="assets/importer-two-level-0.9.7.png" alt="The Neonmem two-level importer: folders & files become a searchable pool, an agent chat becomes kept memories; result labels Facts loaded and Memories created" width="720">
@@ -47,7 +47,7 @@ mind for your project, and you can watch it form in 3D.
   dead-ends, rules, and **plans** for where you're heading. The *how* and *why*, not a flat log.
 - 🧩 **A comprehension layer** — it clusters everything into **subsystems** and a **resume
   skeleton**, so a fresh session understands the whole project at once instead of scrolling back.
-- 🧠 **Models built in** — small, **self-built (no third-party LLM)** models, trained on *your*
+- 🧠 **Models built in** — small, **self-contained** models, trained on *your*
   memory, that rank what matters, sense tone, and type what's captured. They travel inside the file.
 
 <p align="center">
@@ -61,7 +61,7 @@ mind for your project, and you can watch it form in 3D.
 - 🌙 **Dreams** — a consolidation pass that decays noise and keeps what matters.
 - 🕰️ **Time-travel** — "what did we do three days ago?"
 - 👁️ **You can see it** — a real-time 3D brain of memory forming, recalling, consolidating.
-- 🔒 **Local & private** — offline, no cloud, no API cost; the cartridge is a portable file you own.
+- 🔒 **Local & private** — fully offline; the cartridge is a portable file you own.
 - 🛡️ **Tamper-proof** — binary and agent-write-only by design.
 
 It isn't just for code: the same agent can run a tricky DevOps migration or help

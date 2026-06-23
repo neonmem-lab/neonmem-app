@@ -31,19 +31,6 @@ components in `LICENSES.chromium.html` within the application directory.
 | CPython runtime + standard library | PSF License Agreement | https://www.python.org |
 | cryptography (opt-in cartridge encryption) | Apache-2.0 / BSD-3-Clause | https://github.com/pyca/cryptography |
 
-## Offline AI importer (downloaded on first run to `~/.neonmem`)
-
-The importer's model and inference runtime are too large to bundle in the installer, so
-they are fetched once from the Neonmem release. They remain under their own licenses.
-
-| Component | License | Project |
-|---|---|---|
-| llama.cpp / ggml (inference engine + CPU backends) | MIT | https://github.com/ggml-org/llama.cpp |
-| IBM Granite 3.1 (base model, fine-tuned by Neonmem) | Apache-2.0 | https://huggingface.co/ibm-granite |
-| RaBitQ (1-bit vector quantization method) | Apache-2.0 | https://github.com/VectorDB-NTU/RaBitQ-Library |
-
-No Meta LLaMA code or model weights are used; "llama" in the engine name is historical.
-
 ## Node / Electron (bundled in the desktop app)
 
 | Component | License | Project |
