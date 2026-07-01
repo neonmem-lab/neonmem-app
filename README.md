@@ -23,13 +23,13 @@ from <em>your</em> sources instead of guessing. Local · private · yours.
 </p>
 
 <p align="center">
-  <img src="assets/labyrinth-1.png" alt="Neonmem's living memory, visualized in 3D" width="760">
+  <img src="assets/hero-v098.png" alt="The Neonmem app — a project's living memory brain beside the chat that fills it" width="820">
 </p>
 
-> **Public beta (v0.9.7).** New: a **two-level importer** (folders → searchable pool, agent chats → kept memories) and **grounded, offline recall** on IBM Granite-30M ONNX embeddings that run fully on your CPU. Windows **and Linux** (AppImage) — macOS is on the way.
+> **Public beta (v0.9.8).** Your memory now works in **Claude Desktop** as well as Claude Code, there's a **standalone visualiser** that shows any project's memory as a living 3D brain, and you can **create projects and memories just by asking**. The installer sets up Claude Code, Claude Desktop, or both — and installs the command-line tool alongside. Windows **and Linux** (AppImage) — macOS is on the way.
 
 <p align="center">
-  <img src="assets/importer-two-level-0.9.7.png" alt="The Neonmem two-level importer: folders & files become a searchable pool, an agent chat becomes kept memories; result labels Facts loaded and Memories created" width="720">
+  <img src="assets/builder-preview.png" alt="The Neonmem Memory Builder: folders and files become a searchable pool, agent chats become the decisions worth keeping" width="760">
 </p>
 
 ---
