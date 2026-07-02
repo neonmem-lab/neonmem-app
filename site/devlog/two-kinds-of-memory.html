@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two kinds of memory: what you search, and what you keep — Neonmem</title>
+<meta name="description" content="Neonmem's 0.9.7 importer treats your docs and your agent chats as two different things: a searchable knowledge pool, and the decisions worth keeping. Plus grounded, offline recall that answers from your sources instead of guessing.">
+<link rel="canonical" href="https://neonmem.com/devlog/two-kinds-of-memory">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0a1a">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://neonmem.com/devlog/two-kinds-of-memory">
+<meta property="og:title" content="Two kinds of memory: what you search, and what you keep">
+<meta property="og:description" content="A searchable knowledge pool for your docs, and clean kept memories from your agent chats — with grounded, offline recall that answers from your sources.">
+<meta property="og:image" content="https://neonmem.com/assets/comprehension/brain-subsystems.png">
+<link rel="stylesheet" href="/styles.css?v=6">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Two kinds of memory: what you search, and what you keep","datePublished":"2026-06-22","author":{"@type":"Organization","name":"The Neonmem team"},"publisher":{"@type":"Organization","name":"Neonmem"},"mainEntityOfPage":"https://neonmem.com/devlog/two-kinds-of-memory"}
+</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/"><img src="/assets/logo.svg" width="28" height="28" alt=""> Neonmem <span class="badge">Beta</span></a>
+  <nav>
+    <a href="/guide">Guide</a>
+    <a href="/#journeys">Journeys</a>
+    <a href="/portable">Portable</a>
+    <a href="/noinstall">No-install</a>
+    <a href="/devlog">Dev Corner</a>
+    <a href="/#pricing">Pricing</a>
+    <a class="btn btn-sm" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.2/Neonmem-Setup-0.9.8.2.exe">Download</a>
+  </nav>
+</header>
+
+<main>
+<section class="jhero">
+  <span class="jkicker">Developer Corner</span>
+  <h1>Two kinds of memory: <span class="grad">what you search, and what you keep</span></h1>
+  <p class="muted">The Neonmem team · Jun 22, 2026 · <a href="/devlog">← Back to Dev Corner</a></p>
+</section>
+
+<section class="features narrow">
+  <p>Every developer who has paired with an AI agent for more than a week knows the ghost. Monday it understood your whole architecture. Tuesday it's a polite stranger asking what the project does. So you re-explain — every morning, the same context, paying the tokens each time. The usual answer is "use a bigger context window," but that's treating amnesia with flashcards: you re-teach the same facts forever, and the model still can't tell <em>this</em> decision from one you reversed three weeks ago. Context is short-term memory. What's missing is the long-term kind.</p>
+
+  <p>A memory product has one job: when the agent needs to know something about your project, it should be there — and it should be <em>right</em>. The fastest way to lose a user's trust is to confidently invent something. So 0.9.7 was about two things: importing your project the way it actually exists, and making recall <strong>grounded</strong> — answers that come from your sources, not the model's imagination.</p>
+
+  <h2>The bug that reframed the release</h2>
+  <p>Our test corpus is a large enterprise system, and one question kept embarrassing us. Ask <em>"what is ARC?"</em> and the agent would confidently answer <em>"Automatic Reference Counting"</em> — the textbook expansion. Wrong. In these documents ARC is a specific in-house platform. The agent wasn't reading the memory we'd given it; it was pattern-matching on its training and producing a plausible, authoritative, <strong>wrong</strong> answer.</p>
+  <p>And a memory that's <em>occasionally</em> wrong is worse than no memory at all. With no memory you stay skeptical and go check. With a memory that's wrong five percent of the time, you relax — and that's exactly when it burns you. Trust is binary. So the real specification was never "remember more." It was: <strong>answer from the user's sources, or honestly say you don't know.</strong> Everything else serves that.</p>
+
+  <h2>Your project isn't one kind of thing</h2>
+  <p>When we watched real imports, an obvious truth kept getting in the way: the stuff you want an agent to remember comes in two very different shapes, and they want opposite treatment.</p>
+  <ul class="ticks">
+    <li><strong>Documents and code are reference material.</strong> You don't want them "summarised" into a handful of memories — you want <em>all</em> of it, searchable, so any detail can be recalled on demand. That's a knowledge <strong>pool</strong>.</li>
+    <li><strong>Agent conversations are decisions.</strong> A chat with your assistant isn't reference material — it's where you <em>decided</em> things, hit dead-ends, and set rules. You don't want the whole transcript; you want the handful of conclusions worth keeping.</li>
+  </ul>
+  <p>The old importer treated both the same — it flattened everything into one pile. 0.9.7 splits them.</p>
+
+  <h2>Folders &amp; files → a searchable pool</h2>
+  <p>Point Neonmem at your docs and code and it vectorises the whole corpus into a lossless, deduplicated facts pool — the same fact stated three ways becomes one fact, with every source kept. Nothing is thrown away or paraphrased; the original passages are retrievable by meaning or by wording. Ask <em>"what is ARC?"</em> and the answer is lifted from <strong>your documents</strong> — <em>your team's own provisioning platform</em> — not a plausible-sounding guess.</p>
+  <p>You can tag an import with the topics you care about. Tag <code>Site API</code> and Neonmem mints one clean, canonical memory for it linked back to the source — <em>even when your docs never write the words "Site API" verbatim</em>, as long as they clearly describe it. If the corpus genuinely has nothing on a tag, it's left out rather than faked.</p>
+
+  <h2>Agent chats → memories you keep</h2>
+  <p>The new <strong>Agent chat</strong> importer reads a Claude (or other agent) transcript and pulls out only what's worth remembering: the <strong>decisions</strong>, the <strong>dead-ends</strong>, the <strong>rules</strong>. "Decided: we'll adopt the Site API as the integration surface." "The first embedding approach failed because the vectors landed in a different space." "Rule: never co-author commits." A decision is stored as a decision; a dead-end stays a warning.</p>
+  <p>It deliberately throws away the noise — the "I read the file…", the "please check…", the back-and-forth — and it deduplicates every kept memory through the same facts layer, so re-importing a conversation never doubles up. One canonical statement, linked to its context.</p>
+  <p>And if a chat <em>references a file on disk</em>, Neonmem follows the link: that file is pulled into the pool, with a memory that points back to it. The conversation and the artefacts it touched arrive together.</p>
+
+  <h2>The counterintuitive part: a good memory is mostly about forgetting</h2>
+  <p>This is the idea we find most interesting, and it's borrowed straight from neuroscience. Map a memory system onto the brain and you get a tidy picture: a large, distributed store of <em>what you know</em>, and a process that replays the day's experience into long-term form. Most "AI memory" builds those two and stops.</p>
+  <p>But there's a third part people forget to model, and it's the one that matters most — the regulator that runs <strong>homeostasis</strong>, and in particular the <strong>sleep cycle</strong> that decides what gets consolidated and what gets cleared. Biological memory stays <em>sharp</em> precisely because it forgets aggressively. A memory that only ever accumulates becomes a junk drawer: slower to search, full of stale and contradicted facts, increasingly confidently wrong. The magic isn't storage — it's the discipline of deciding what <em>not</em> to keep.</p>
+  <p>So Neonmem has its own version of that regulator. A memory is one clean, canonical statement linked to its source — never a wall of raw text. From a conversation it keeps the signal and discards the narration. And while the cartridge "sleeps", an offline consolidation pass merges duplicates and lets go of facts nothing references anymore, so the store stays lean instead of bloating. We spent as much effort on what the memory <em>refuses</em> to keep as on what it stores — and that restraint is the difference between a demo and something you trust.</p>
+
+  <h2>Grounded, and local</h2>
+  <p>Underneath both paths is a new <strong>offline embedding engine</strong> — a compact model that lives inside the app and runs entirely on your CPU, giving database-class retrieval quality without the weight. Every prompt walks memory from the fast, instinctive layers to the slow, deliberate ones, and answers from what's actually there — or abstains. If the answer is in your sources, it surfaces; if it isn't, the agent says so instead of inventing one.</p>
+  <p>It all runs on your machine. Partly that's a privacy stance — but mostly it's that a memory of <em>your</em> work, your decisions and your dead-ends is yours, and shouldn't be a row in someone else's database.</p>
+
+  <h2>Where we are</h2>
+  <p>Neonmem is in <strong>public beta</strong>, free for personal use. Next up: <strong>team memory</strong> (sharing a cartridge across a team), broader agent coverage, more autonomous workflows, and macOS. If you live in an AI assistant and you're tired of re-explaining your project every morning — or worse, catching it confidently wrong — give 0.9.7 a try and tell us where it falls short.</p>
+</section>
+
+<section class="jcta">
+  <h2>Give your agent a memory that doesn't guess</h2>
+  <a class="btn btn-lg btn-win" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.2/Neonmem-Setup-0.9.8.2.exe">⬇ Download for Windows</a>
+  <a class="btn btn-lg btn-ghost" href="/#cartridge">What's a cartridge?</a>
+  <p class="muted">Windows x64 · free for personal use · local &amp; private</p>
+</section>
+</main>
+
+<footer>
+  <p><img src="/assets/logo.svg" width="22" height="22" alt="" style="vertical-align:-5px"> Neonmem — a living memory for AI agents.</p>
+  <p class="muted"><a href="/">Home</a> · <a href="/report">Report a bug</a> · <a href="mailto:support@neonmem.com">support@neonmem.com</a></p>
+  <p class="muted">© 2026 Neonmem. Free for noncommercial use; commercial license available.</p>
+</footer>
+</body>
+</html>

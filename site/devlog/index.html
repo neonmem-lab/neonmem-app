@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Developer Corner — Neonmem news, release notes &amp; dev log</title>
+<meta name="description" content="The Neonmem Developer Corner — release notes, product news and notes from the team building a local, private AI memory cartridge for your agent.">
+<link rel="canonical" href="https://neonmem.com/devlog">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0a1a">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Neonmem Developer Corner" href="/devlog/rss.xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neonmem.com/devlog">
+<meta property="og:title" content="Neonmem Developer Corner">
+<meta property="og:description" content="Release notes, product news and notes from the team building Neonmem — a local, private AI memory cartridge.">
+<meta property="og:image" content="https://neonmem.com/assets/comprehension/brain-subsystems.png">
+<link rel="stylesheet" href="/styles.css?v=6">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Neonmem Developer Corner","url":"https://neonmem.com/devlog","description":"Release notes and product news for Neonmem, a local AI memory cartridge for AI agents."}
+</script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="/"><img src="/assets/logo.svg" width="28" height="28" alt=""> Neonmem <span class="badge">Beta</span></a>
+  <nav>
+    <a href="/guide">Guide</a>
+    <a href="/#journeys">Journeys</a>
+    <a href="/portable">Portable</a>
+    <a href="/noinstall">No-install</a>
+    <a href="/devlog">Dev Corner</a>
+    <a href="/#pricing">Pricing</a>
+    <a class="btn btn-sm" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.2/Neonmem-Setup-0.9.8.2.exe">Download</a>
+  </nav>
+</header>
+
+<main>
+<section class="jhero">
+  <span class="jkicker">Developer Corner</span>
+  <h1>News &amp; <span class="grad">dev log</span></h1>
+  <p class="lede">What we just shipped, what we're building, and notes from the team behind Neonmem's memory cartridge.</p>
+  <p class="muted"><a href="https://github.com/neonmem-lab/neonmem-app/releases">All GitHub releases →</a> · <a href="/">Back to home</a></p>
+</section>
+
+<section class="features">
+  <div id="posts" class="grid features-grid">
+    <div class="card" id="posts-loading"><h3>Loading the latest…</h3><p class="muted">Fetching news from the Developer Corner.</p></div>
+  </div>
+  <p class="center muted" id="posts-empty" hidden>No posts yet — check back soon, or see the <a href="https://github.com/neonmem-lab/neonmem-app/releases">GitHub releases</a>.</p>
+</section>
+
+<section class="jcta">
+  <h2>Give your agent a memory cartridge</h2>
+  <a class="btn btn-lg" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.2/Neonmem-Setup-0.9.8.2.exe">⬇ Download</a>
+  <a class="btn btn-lg btn-ghost" href="/#cartridge">What's a cartridge?</a>
+</section>
+</main>
+
+<footer>
+  <p><img src="/assets/logo.svg" width="22" height="22" alt="" style="vertical-align:-5px"> Neonmem — a living memory for AI agents.</p>
+  <p class="muted"><a href="/">Home</a> · <a href="/report">Report a bug</a> · <a href="mailto:support@neonmem.com">support@neonmem.com</a></p>
+  <p class="muted">© 2026 Neonmem. Free for noncommercial use; commercial license available.</p>
+</footer>
+
+<script>
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmtDate = (iso) => {
+    try { return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }); }
+    catch { return ""; }
+  };
+  const renderBody = (body) =>
+    String(body || "").split(/\n{2,}/).map((p) => `<p>${esc(p.trim()).replace(/\n/g, "<br>")}</p>`).join("");
+
+  // The story so far — a high-level dev log, oldest behind newest. Always rendered
+  // (no backend needed); any posts from /api/news are merged on top by slug.
+  const SEED = [
+    { slug: "two-kinds-of-memory", tag: "post", published_at: "2026-06-22", author: "The Neonmem team",
+      title: "Two kinds of memory: what you search, and what you keep",
+      body: "0.9.7's importer stops treating your project as one flat pile. Folders and files become a lossless, deduplicated knowledge pool you can search — ask \"what is ARC?\" and the answer is lifted from your documents, not guessed. Agent chats become something different: Neonmem reads a Claude transcript and keeps only the decisions, dead-ends and rules worth remembering, deduplicated and typed, dropping the process-noise — and if a chat references a file on disk, that file is pulled into the pool too. Underneath both is a new offline embedding engine — a compact model that runs entirely on your CPU — that makes recall grounded: it answers from your sources or admits it doesn't know, instead of confidently making things up." },
+    { slug: "v0-9-7-structured-memory", tag: "release", published_at: "2026-06-16", author: "The Neonmem team",
+      title: "0.9.7 — Import builds structured memory, not a flat pile",
+      body: "Importing documents or code now builds a structured hierarchy: Neonmem groups what it learns into topics and summaries over the details — an outline of the material — rather than a single flat layer of facts. Ask for an overview and you receive the summary level; ask for a specific fact and you receive the precise one. Imported knowledge is retained as durable long-term memory and answers reliably after reopening the project, fully offline. This release also resolves the install-folder save/recall fault and the fragmentary-memory issue after an import, with a cleaner single-folder installer." },
+    { slug: "v0-9-6-answers-that-stick", tag: "release", published_at: "2026-06-15", author: "The Neonmem team",
+      title: "0.9.6 — Imported knowledge that answers, even after you reopen",
+      body: "Import a pile of docs and your agent could answer from them — but the magic faded once you closed the project. Now the importer's own understanding of your material travels inside the cartridge, so \"what is X?\" finds the right answer every time you reopen, long after the import. Also in this release: your agent can fetch a saved procedure or rule without erroring; your memory is saved before an auto-compact and restored after, so a long session never loses its thread; and the cross-process write-lock now lives outside the cartridge, keeping your memory one clean file while several tools share it safely." },
+    { slug: "v0-9-5-robust-importer", tag: "release", published_at: "2026-06-15", author: "The Neonmem team",
+      title: "0.9.5 — A tougher importer that understands more",
+      body: "The importer got both safer and smarter. It now shows clear progress, tells you when it's truly Done, and won't let you close it mid-build — so an import can't be interrupted halfway or collide with a read. What it keeps is cleaner: it skips tables-of-contents and page-number noise, stops mislabelling reference text, and holds on to the actual definitions. And it reads code now, as well as docs — classes and functions become memories you can ask about by name. Under the hood, a cross-process lock lets several tools share one cartridge safely." },
+    { slug: "v0-9-4-reopen-fix", tag: "release", published_at: "2026-06-15", author: "The Neonmem team",
+      title: "0.9.4 — Reliable reopen after an update",
+      body: "A stability fix: after updating Neonmem and reopening an existing project, running a memory action could fail with a file error on some setups. Fixed — your projects reopen and just work across updates." },
+    { slug: "v0-9-3-big-memory-no-gpu", tag: "release", published_at: "2026-06-15", author: "The Neonmem team",
+      title: "0.9.3 — Big memories load smoothly, even without a GPU",
+      body: "A performance release for large memories. Importing a whole doc set into a project no longer stutters the view, and the 3D brain now renders on-demand — so it stays smooth on machines with no dedicated GPU (corporate laptops, VDI, remote desktops). Point Neonmem at hundreds of docs and your agent becomes an expert on that subject, while the app stays responsive." },
+    { slug: "decisions-dead-ends-dreams", tag: "post", published_at: "2026-06-15", author: "The Neonmem team",
+      title: "Decisions, dead-ends & dreams — what your agent's memory holds",
+      body: "What a living memory actually keeps — decisions (the why), dead-ends it won't re-suggest, your rules, and the plan for where you're going — organised into zones like a mind. And, like a mind, it sleeps and dreams: a consolidation pass that turns scattered notes into understanding. Here's what that feels like day to day.",
+      url: "/devlog/decisions-dead-ends-dreams" },
+    { slug: "ai-importer-rag-memory", tag: "post", published_at: "2026-06-19", author: "The Neonmem team",
+      title: "An offline AI importer that builds a full RAG memory",
+      body: "Neonmem's importer now ships its own fine-tuned AI that runs entirely on your machine — no cloud, no GPU, no API key. Point it at your docs, code and Claude history and it builds a deduplicated, vector-searchable knowledge base on top of the smart memory. It keeps the original sources compressed inside (optionally encrypted), so one smart cartridge replaces the scattered files — delete the originals and keep a single private brain.",
+      url: "/devlog/ai-importer-rag-memory" },
+    { slug: "single-point-memory", tag: "post", published_at: "2026-06-14", author: "The Neonmem team",
+      title: "One place for everything your AI needs to know about your project",
+      body: "Working on a big project with an AI assistant means docs, decisions, meeting notes, timelines and plans, alongside the code. A flat pile of notes is hard to put in order. We built Neonmem as a single-point memory: one local cartridge that holds the reasoning, the understanding of how it fits together, and the direction — so your agent works like a code buddy who knows the project and how you work.",
+      url: "/devlog/single-point-memory" },
+    { slug: "v0-9-2-importer-updates", tag: "release", published_at: "2026-06-14", author: "The Neonmem team",
+      title: "0.9.2 — An importer that updates, and a sharper memory",
+      body: "The importer now updates an existing cartridge in place: re-run it over changed docs or code and it merges what's new, supersedes what moved on, and skips what it already knows — so your memory stays current and lean.\n\nAlso in this release: your agent resumes from the exact point you stopped (the open thread and your last directive, with the recent notes), connections between memories render reliably, and clean, readable names for the subsystems your memory organises itself into." },
+    { slug: "v0-9-memory-cartridge", tag: "release", published_at: "2026-06-13", author: "The Neonmem team",
+      title: "0.9 — The memory cartridge",
+      body: "The big one. Your memory becomes a cartridge: one file that carries the reasoning graph, a layer that understands how it all fits together, and a small model trained on your own memory — all offline, all yours.\n\nNew in 0.9: plans, so your agent knows where you're going, as well as what happened; a living brain you watch organise itself into subsystems as you work; and a smarter importer that pulls the goals and next-steps out of your docs too. Load the cartridge and your agent is instantly up to speed." },
+    { slug: "v0-8-facts-from-docs-and-code", tag: "release", published_at: "2026-06-06", author: "The Neonmem team",
+      title: "0.8 — Gather facts from your docs and code",
+      body: "Neonmem learned to read what you already have. Point it at a spec or a source tree and it keeps the important facts — your APIs, your config, the shape of your code — as connected memory, and skips the filler.\n\nSo your agent knows your project without re-reading the files every time." },
+    { slug: "v0-7-a-living-memory", tag: "release", published_at: "2026-05-16", author: "The Neonmem team",
+      title: "0.7 — A living memory",
+      body: "Our first public beta. Neonmem gives your agent a living memory: decisions, dead-ends, debates and rules, captured as a connected graph rather than a flat log — and it dreams overnight to keep what matters and let the noise fade.\n\nIt works with Claude Code, it's local and private, and you can watch the whole thing form in a 3D brain. Your memory is a portable file you own." },
+    { slug: "why-we-built-neonmem", tag: "note", published_at: "2026-04-02", author: "The Neonmem team",
+      title: "Why we built Neonmem",
+      body: "Every session, our agent forgot everything — the decisions, the dead-ends, the why. We got tired of re-explaining our own project to a brilliant assistant with no memory of yesterday.\n\nSo we set out to give it one that lives with the work and grows like a mind: remembering what was decided, and how and why — and letting you watch it form. That idea became Neonmem. Thanks for being here early." },
+  ];
+
+  function render(posts) {
+    document.getElementById("posts-loading")?.remove();
+    const wrap = document.getElementById("posts");
+    if (!posts.length) { document.getElementById("posts-empty").hidden = false; return; }
+    posts.sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)));
+    wrap.innerHTML = posts.map((p) => `
+      <article class="card">
+        <h3>${esc(p.title)} <span class="muted">· ${esc(p.tag || "update")} · ${esc(fmtDate(p.published_at))}</span></h3>
+        ${renderBody(p.body)}
+        ${p.url ? `<p><a class="btn btn-sm btn-ghost" href="${esc(p.url)}">Read the full post →</a></p>` : ""}
+        <p class="muted">— ${esc(p.author || "Neonmem team")}</p>
+      </article>`).join("");
+  }
+
+  async function load() {
+    let posts = SEED.slice();
+    try {
+      const r = await fetch("/api/news", { headers: { accept: "application/json" } });
+      const data = await r.json();
+      const api = (data && data.posts) || [];
+      if (api.length) {
+        const bySlug = new Map(posts.map((p) => [p.slug, p]));
+        for (const p of api) bySlug.set(p.slug, p);   // API wins on slug
+        posts = [...bySlug.values()];
+      }
+    } catch (e) { /* offline / no backend yet — the seed history still shows */ }
+    render(posts);
+  }
+  load();
+</script>
+</body>
+</html>

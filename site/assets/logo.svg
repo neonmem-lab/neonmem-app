@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Neonmem">
+  <defs>
+    <linearGradient id="nm-edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset=".5" stop-color="#7c6cff"/>
+      <stop offset="1" stop-color="#d946ef"/>
+    </linearGradient>
+    <radialGradient id="nm-fill" cx="50%" cy="40%" r="62%">
+      <stop offset="0" stop-color="#3a2a7e" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#0b0a1a" stop-opacity=".15"/>
+    </radialGradient>
+    <filter id="nm-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="1.25" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#nm-glow)">
+    <!-- cyber-brain silhouette -->
+    <path fill="url(#nm-fill)" stroke="url(#nm-edge)" stroke-width="2" stroke-linejoin="round" d="
+      M32 11 C 25 8, 16 10, 14 18 C 8 19, 7 27, 12 30 C 7 34, 10 43, 18 44
+      C 19 51, 28 54, 32 49 C 36 54, 45 51, 46 44 C 54 43, 57 34, 52 30
+      C 57 27, 56 19, 50 18 C 48 10, 39 8, 32 11 Z"/>
+    <!-- central fissure -->
+    <path fill="none" stroke="url(#nm-edge)" stroke-width="1.4" stroke-linecap="round" d="M32 11 C 30 21, 34 27, 31 33 C 28 39, 33 44, 32 49"/>
+    <!-- folds -->
+    <path fill="none" stroke="#22d3ee" stroke-width="1.1" stroke-linecap="round" opacity=".85" d="M22 17 C 17 21, 22 25, 18 28"/>
+    <path fill="none" stroke="#7c6cff" stroke-width="1.1" stroke-linecap="round" opacity=".85" d="M15 33 C 21 35, 19 41, 25 42"/>
+    <path fill="none" stroke="#7c6cff" stroke-width="1.1" stroke-linecap="round" opacity=".85" d="M42 17 C 47 21, 42 25, 46 28"/>
+    <path fill="none" stroke="#d946ef" stroke-width="1.1" stroke-linecap="round" opacity=".85" d="M49 33 C 43 35, 45 41, 39 42"/>
+    <!-- synapse nodes -->
+    <circle cx="18" cy="28" r="1.8" fill="#22d3ee"/>
+    <circle cx="25" cy="42" r="1.6" fill="#7c6cff"/>
+    <circle cx="46" cy="28" r="1.8" fill="#d946ef"/>
+    <circle cx="39" cy="42" r="1.6" fill="#22d3ee"/>
+    <circle cx="32" cy="19" r="1.5" fill="#ecfdff"/>
+  </g>
+</svg>
