@@ -1,113 +1,21 @@
-<h1 align="center">Neonmem</h1>
+# Neonmem
 
-<p align="center"><strong>A living memory <em>cartridge</em> for your AI agent.</strong></p>
+Downloads for Neonmem Workspace — a Visual Studio Code fork that works natively with the Neonmem memory format.
 
-<p align="center">
-Not a vector database — a self-contained <strong>.neonmem cartridge</strong> that carries a
-reasoning graph, a comprehension layer that <em>understands</em> your project, and a
-two-level importer: your docs &amp; code become a searchable, grounded knowledge pool, and
-your agent chats become the decisions and dead-ends worth keeping. So your agent answers
-from <em>your</em> sources instead of guessing. Local · private · yours.
-</p>
+## Download
 
-<p align="center">
-  <a href="https://github.com/neonmem-lab/neonmem-app/releases/latest"><strong>⬇ Download for Windows</strong></a>
-  ·
-  <a href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.7/Neonmem-0.9.7-x86_64.AppImage"><strong>⬇ Linux (AppImage)</strong></a>
-  ·
-  <a href="https://neonmem.com">neonmem.com</a>
-  ·
-  <a href="https://neonmem.com/#journeys">See the journeys</a>
-  ·
-  <a href="https://neonmem.com/report">Report a bug</a>
-</p>
+Get the latest installer from the [Releases](../../releases/latest) page.
 
-<p align="center">
-  <img src="assets/hero-v098.png" alt="The Neonmem app — a project's living memory brain beside the chat that fills it" width="820">
-</p>
+- Windows: `neonmem-workspace-Setup.exe`
 
-> **Public beta (v0.9.8).** Your memory now works in **Claude Desktop** as well as Claude Code, there's a **standalone visualiser** that shows any project's memory as a living 3D brain, and you can **create projects and memories just by asking**. The installer sets up Claude Code, Claude Desktop, or both — and installs the command-line tool alongside. Windows **and Linux** (AppImage) — macOS is on the way.
+## About
 
-<p align="center">
-  <img src="assets/builder-preview.png" alt="The Neonmem Memory Builder: folders and files become a searchable pool, agent chats become the decisions worth keeping" width="760">
-</p>
+Neonmem Workspace reads and writes a project's `.neonmem` cartridge directly, so the accumulated experience of a project — its decisions, rules, dead-ends, and plans — is available while you and the agent work.
 
----
+The `.neonmem` cartridge is a single-file, multi-layer memory store with built-in vector storage: typed nodes (observation, decision, rule, dead-end, plan, and others), typed edges, and a per-node embedding. Memory is organized into three tiers (reflex, short-term, long-term). Recall and reasoning use Hopfield/Ising energy-based associative memory.
 
-## What it is
-
-Your agent forgets your project between sessions. Neonmem gives it a **living memory
-cartridge** — one `.neonmem` file that grows as you work, holds the *why* behind every
-decision, and even knows *where you're going*. It's not a vector database; it's a small
-mind for your project, and you can watch it form in 3D.
-
-**Three things in one cartridge:**
-
-- 🕸️ **A reasoning graph** — 14 node types and typed edges: observations, decisions,
-  dead-ends, rules, and **plans** for where you're heading. The *how* and *why*, not a flat log.
-- 🧩 **A comprehension layer** — it clusters everything into **subsystems** and a **resume
-  skeleton**, so a fresh session understands the whole project at once instead of scrolling back.
-- 🧠 **Models built in** — small, **self-contained** models, trained on *your*
-  memory, that rank what matters, sense tone, and type what's captured. They travel inside the file.
-
-<p align="center">
-  <img src="assets/brain-subsystems.png" alt="A Neonmem memory cartridge, coloured by self-organised subsystems around a glowing comprehension core" width="620">
-</p>
-
-**What that gives you:**
-
-- 🚫 **Remembers dead-ends** — failed approaches stay recorded, so they aren't re-suggested.
-- 🧭 **Knows the plan** — immediate next-steps and long-running goals, kept front-of-mind.
-- 🌙 **Dreams** — a consolidation pass that decays noise and keeps what matters.
-- 🕰️ **Time-travel** — "what did we do three days ago?"
-- 👁️ **You can see it** — a real-time 3D brain of memory forming, recalling, consolidating.
-- 🔒 **Local & private** — fully offline; the cartridge is a portable file you own.
-- 🛡️ **Tamper-proof** — binary and agent-write-only by design.
-
-It isn't just for code: the same agent can run a tricky DevOps migration or help
-you write a screenplay — and Neonmem remembers all of it. See the full
-[journeys](https://neonmem.com/#journeys).
-
-## Works with
-
-| Agent | Status |
-|---|---|
-| **Claude Code** | ✅ Full support (deliberate memory **+** passive per-turn capture) |
-| **GitHub Copilot / VS Code** | 🧪 Experimental (the deliberate memory tools) |
-| More agents | 🔜 Coming soon |
-
-## Install
-
-1. **[Download the installer](https://github.com/neonmem-lab/neonmem-app/releases/latest)** (Windows x64).
-2. Run it — it detects Claude Code (or point it at your install) and registers
-   automatically. Optionally tick **GitHub Copilot (experimental)** for VS Code.
-3. Open Claude Code and just work — Neonmem loads your memory at session start.
-4. Launch the **Neonmem** app from the Start menu to watch the brain.
-
-Uninstall cleanly from **Add/Remove Programs** (it un-registers itself and keeps
-your memory). Misbehaving? `neonmem disable` turns it off without uninstalling.
-
-**On Linux:** grab the
-[AppImage](https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.7/Neonmem-0.9.7-x86_64.AppImage),
-`chmod +x` it, and run — no install, no gatekeeper prompt.
-
-See [RELEASE-NOTES-0.9.7.md](RELEASE-NOTES-0.9.7.md) for what's in this build.
-
-## Report a bug
-
-Full instructions (including where to find your logs) are at
-**[neonmem.com/report](https://neonmem.com/report)** — or
-[open an issue](https://github.com/neonmem-lab/neonmem-app/issues/new/choose),
-or email **support@neonmem.com**.
+This repository hosts the published releases and installers. Releases 0.7 through 0.9.8.x are the previous Electron application; from 1.0.0 the product is the editor fork. The source is maintained in a separate private repository.
 
 ## License
 
-**Free** for personal, hobby, research, educational and nonprofit use under the
-[PolyForm Noncommercial License](LICENSE). **Commercial use requires a license** —
-see [COMMERCIAL.md](COMMERCIAL.md) or email **sales@neonmem.com**.
-
-Bundled third-party components keep their own licenses — see
-[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and
-[ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md).
-
-> This repository hosts the **downloads and documentation**. The source is not public.
+Free for personal, hobby, research, educational and nonprofit use under the PolyForm Noncommercial License. Commercial use requires a license.
