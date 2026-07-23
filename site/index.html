@@ -3,345 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Neonmem — a memory cartridge for AI agents</title>
-<meta name="description" content="Neonmem is a self-governing memory container designed to store the flow of your work and make your experience with agents seamless. Each new session continues the last one — it takes care of remembering designs, approaches and all the milestones for you. And it has a built-in data pool for your documents, code and assets. Also its a platform UI tool to work with agents in project base way.">
-<meta name="keywords" content="AI memory, AI agent memory, artificial memory, persistent memory for AI, LLM memory, memory for AI agents, agent memory, Claude Code memory, long-term AI memory, local AI memory, private AI memory, AI assistant memory, memory cartridge, AI agent planning, agent comprehension layer, no-LLM memory model">
+<title>Neonmem Workspace</title>
+<meta name="description" content="Neonmem Workspace is a memory-based agentic IDE. It uses neonmem cartridges to enhance the Claude Code experience, helping the agent make decisions through a prism of the project's experience.">
 <link rel="canonical" href="https://neonmem.com/">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0b0a1a">
+<meta name="theme-color" content="#0a0c11">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-<link rel="alternate" type="application/rss+xml" title="Neonmem Developer Corner" href="/devlog/rss.xml">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://neonmem.com/">
-<meta property="og:title" content="Neonmem — make your AI a colleague and friend">
-<meta property="og:description" content="Neonmem is a cartridge for agents that gives them all their memory in one place — a layered memory platform where your experience with AI is stored as nodes connected across different layers. Self-governing, and all in one file.">
-<meta property="og:image" content="https://neonmem.com/assets/hero-v098.png?v=0.9.8">
-<meta property="og:site_name" content="Neonmem">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Neonmem — make your AI a colleague and friend">
-<meta name="twitter:description" content="Your agent is have experience now and work true prism of it experience.">
-<meta name="twitter:image" content="https://neonmem.com/assets/hero-v098.png?v=0.9.8">
-
-<link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/hero-v098.png?v=0.9.8">
-<link rel="stylesheet" href="styles.css?v=6">
+<meta property="og:title" content="Neonmem Workspace">
+<meta property="og:description" content="A memory-based agentic IDE. It uses neonmem cartridges to give the agent a prism of the project's experience to reason through.">
+<meta property="og:site_name" content="Neonmem Workspace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neonmem Workspace">
+<meta name="twitter:description" content="A memory-based agentic IDE, built on the neonmem cartridge and the PRISM associative-memory model.">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Neonmem",
+  "name": "Neonmem Workspace",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Windows",
-  "description": "A memory cartridge for AI agents: one local .neonmem file carrying a reasoning graph (with plans for where you're going), a self-built comprehension layer that clusters memory into subsystems and a resume skeleton, and a small model trained on your own memory.",
+  "description": "A memory-based agentic IDE forked from Visual Studio Code. It stores a project's experience in a single-file neonmem cartridge — a typed memory graph with built-in vector storage — and reasons over it with PRISM, an energy-based associative-memory model.",
   "url": "https://neonmem.com/",
-  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.4/Neonmem-Setup-0.9.8.4.exe",
-  "softwareVersion": "0.9.8.4",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD",
-    "description": "Free for personal, hobby, research, educational and nonprofit use. Commercial license available."
-  }
+  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/latest",
+  "softwareVersion": "1.1.0",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"What is Neonmem?","acceptedAnswer":{"@type":"Answer","text":"Neonmem gives an AI agent experience prism of your project. It learns how you think and work, remembering decisions, dead-ends and reasoning across sessions, so your agent could make it designs base on you experience."}},
-    {"@type":"Question","name":"Does Neonmem only help with coding?","acceptedAnswer":{"@type":"Answer","text":"No. It covers coding, DevOps and configuration, and also creative work — writing a book or screenplay, where it tracks characters, plot twists, loose ends and the ideas you rejected."}},
-    {"@type":"Question","name":"Is Neonmem private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Neonmem runs locally with offline embeddings and its one file you can take with you."}},
-    {"@type":"Question","name":"How much does Neonmem cost?","acceptedAnswer":{"@type":"Answer","text":"Free for personal, hobby, research, educational and nonprofit use under the PolyForm Noncommercial License. Commercial use requires a license."}}
-  ]
-}
-</script>
+
+<style>
+	:root {
+		--bg: #0a0c11; --bg-2: #0d1017; --panel: #11141c; --hair: #1c212c;
+		--ink: #e7eaf1; --ink-dim: #9aa3b4; --ink-faint: #6b7383;
+		--accent: #2f81f7; --accent-soft: #1e2a3f; --node-a: #57d9a3; --node-b: #4ac3ff; --node-c: #f2b45c;
+		--mono: ui-monospace, "Cascadia Code", "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+		--sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, sans-serif;
+	}
+	* { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+	@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+	.wrap { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+	a { color: var(--accent); text-decoration: none; }
+	a:hover { text-decoration: underline; }
+	:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+	header.nav { position: sticky; top: 0; z-index: 20; background: rgba(10,12,17,0.82); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hair); }
+	.nav .wrap { display: flex; align-items: center; gap: 28px; height: 60px; }
+	.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: 0.2px; color: var(--ink); }
+	.brand .mark { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #7fb6ff, var(--accent) 60%, #123 100%); box-shadow: 0 0 12px rgba(47,129,247,0.7); }
+	.nav nav { margin-left: auto; display: flex; gap: 26px; }
+	.nav nav a { color: var(--ink-dim); font-size: 14px; }
+	.nav nav a:hover { color: var(--ink); text-decoration: none; }
+
+	section { padding: 96px 0; border-top: 1px solid var(--hair); }
+	section:first-of-type { border-top: none; }
+	.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
+	h1 { font-size: clamp(38px, 6vw, 62px); line-height: 1.04; letter-spacing: -1.2px; margin: 0 0 8px; text-wrap: balance; font-weight: 650; }
+	h2 { font-size: clamp(26px, 3.4vw, 34px); letter-spacing: -0.6px; margin: 0 0 20px; text-wrap: balance; font-weight: 620; }
+	h3 { font-size: 17px; margin: 0 0 6px; font-weight: 600; }
+	p { margin: 0 0 18px; }
+	.lead { font-size: clamp(18px, 2vw, 21px); color: var(--ink); max-width: 60ch; }
+	.dim { color: var(--ink-dim); }
+	.measure { max-width: 68ch; }
+
+	.hero { position: relative; padding-top: 84px; }
+	.hero .kicker { font-size: clamp(20px, 2.4vw, 26px); color: var(--ink-dim); font-weight: 400; margin: 0 0 26px; letter-spacing: -0.3px; }
+
+	/* framed app screenshots */
+	.shot { border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; background: var(--bg-2); box-shadow: 0 30px 80px -34px rgba(0,0,0,0.85), 0 0 0 1px rgba(47,129,247,0.06); }
+	.shot img { display: block; width: 100%; height: auto; }
+	.hero-shot { margin-top: 48px; box-shadow: 0 50px 120px -40px rgba(23,63,140,0.45), 0 24px 70px -30px rgba(0,0,0,0.85); }
+	.shot-cap { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); margin: 14px 2px 0; letter-spacing: 0.2px; }
+	.shot-cap b { color: var(--ink-dim); font-weight: 600; }
+	figure { margin: 0; }
+
+	.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+	.card { background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 22px 24px; }
+	.card h3 { color: var(--ink); }
+	.card p { margin: 0; color: var(--ink-dim); font-size: 15px; }
+	.spec { font-family: var(--mono); font-size: 13px; line-height: 1.9; color: var(--ink-dim); background: var(--bg-2); border: 1px solid var(--hair); border-radius: 12px; padding: 20px 22px; overflow-x: auto; }
+	.spec b { color: var(--ink); font-weight: 600; }
+	.spec .k { color: var(--node-b); }
+	.formula { font-family: var(--mono); font-size: clamp(17px, 2.4vw, 22px); color: var(--ink); background: var(--accent-soft); border: 1px solid #294064; border-radius: 12px; padding: 22px 26px; margin: 22px 0; letter-spacing: 0.3px; overflow-x: auto; }
+	ul.tiers { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+	ul.tiers li { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--hair); }
+	ul.tiers li:first-child { border-top: none; }
+	ul.tiers .t { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.4px; }
+	ul.tiers .d { color: var(--ink-dim); font-size: 15px; }
+
+	.journey-lead { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+	.trace { list-style: none; padding: 0; margin: 0; }
+	.trace li { position: relative; padding: 0 0 26px 30px; border-left: 1px solid var(--hair); }
+	.trace li:last-child { border-left-color: transparent; padding-bottom: 0; }
+	.trace li::before { content: ""; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(47,129,247,0.8); }
+	.trace .type { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); }
+	.trace .what { color: var(--ink); margin: 2px 0 0; }
+
+	.dl { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 26px 0 10px; }
+	.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 600; padding: 14px 24px; border-radius: 10px; font-size: 15px; }
+	.btn:hover { background: #4a90f8; text-decoration: none; }
+	.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--hair); }
+	.btn.ghost:hover { background: var(--panel); }
+	.soon { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 22px; color: var(--ink-faint); font-size: 14px; }
+	.soon span { font-family: var(--mono); }
+
+	footer { border-top: 1px solid var(--hair); padding: 40px 0; color: var(--ink-faint); font-size: 13px; }
+	footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+	footer a { color: var(--ink-dim); }
+
+	@media (max-width: 820px) {
+		.cols, .journey-lead { grid-template-columns: 1fr; gap: 28px; }
+		.nav nav { display: none; }
+		section { padding: 72px 0; }
+	}
+</style>
 </head>
 <body>
 
-
 <header class="nav">
-  <a class="brand" href="/"><img src="assets/logo.svg" width="28" height="28" alt=""> Neonmem <span class="badge">Beta</span></a>
-  <nav>
-    <a href="/guide">Guide</a>
-    <a href="#journeys">Journeys</a>
-    <a href="/portable">Portable</a>
-    <a href="/noinstall">No-install</a>
-    <a href="/devlog">Dev Corner</a>
-    <a href="#news">News</a>
-    <a href="#pricing">Pricing</a>
-    <a class="btn btn-sm" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.4/Neonmem-Setup-0.9.8.4.exe">Download</a>
-  </nav>
+	<div class="wrap">
+		<a class="brand" href="#about"><span class="mark"></span> Neonmem Workspace</a>
+		<nav>
+			<a href="#about">About</a>
+			<a href="#cartridge">Cartridge</a>
+			<a href="#journey">Journey</a>
+			<a href="#download">Download</a>
+		</nav>
+	</div>
 </header>
 
 <main>
-<section class="hero">
-  <div class="hero-text">
-    <h1>AI agent,<br><span class="grad">have experience.</span></h1>
-    <p class="lede">Neonmem gives your agent <strong>experience of your project</strong> — so it learns with you, keeping all the milestones, changes and ideas, but also the failures, since those are part of experience too.</p>
-    <p class="lede" style="font-size:1.02rem;opacity:.92">A portable <strong>memory cartridge</strong>: one file, but with many capabilities — it stores a dynamic memory of designs, ideas, conclusions, dead-ends, and of course a pool of facts. <a href="#cartridge">See what's inside →</a></p>
-    <p class="lede" style="font-size:1.02rem;opacity:.92">Neonmem is a format for memory, built on a layered system inspired by human memory, with a vector database inside.</p>
-    <p class="lede" style="font-size:1.02rem;opacity:.92">Neonmem is a set of tools your agent uses to work with that memory and get the most from it.</p>
-    <p class="lede" style="font-size:1.02rem;opacity:.92">Neonmem is a prism of experience that helps your agent help you, along the path you walk together.</p>
-    <p class="lede" style="font-size:1.02rem;opacity:.92">Neonmem is an app that visualises your memories and keeps them as projects.</p>
-    <div class="cta">
-      <a class="btn btn-lg btn-win" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.4/Neonmem-Setup-0.9.8.4.exe"><svg class="oslogo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 5 L11 4 V11 H2 Z M2 13 L11 13 V20 L2 19 Z M12 3.8 L22 2.5 V11 H12 Z M12 13 L22 13 V21.5 L12 20.2 Z"/></svg>Download for Windows</a>
-      <a class="btn btn-lg btn-ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.4/neonmem-0.9.8.4-portable.tar.gz" title="Portable build with the neonmem command-line tool — no installer, no SmartScreen prompt">Command-line install</a>
-      <a class="btn btn-lg btn-ghost" href="#journeys">See it in action</a>
-    </div>
-    <div class="os-soon">
-      <a class="btn btn-os" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v0.9.8.4/Neonmem-0.9.8.4-x86_64.AppImage"><svg class="oslogo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.5 0c-.15 0-.31 0-.46.02-4.06.32-3 4.6-3.05 6.04-.07 1.05-.29 1.87-1.01 2.9-.85 1.01-2.04 2.64-2.6 4.34-.27.8-.4 1.61-.28 2.39-.04.04-.08.08-.11.13-.25.26-.43.57-.64.8-.19.19-.46.26-.76.39-.3.13-.63.26-.83.65-.09.18-.13.38-.13.58 0 .19.03.38.05.51.06.39.11.7.04.93-.24.65-.27 1.1-.1 1.42.17.32.51.45.9.58.78.19 1.83.13 2.66.57.89.45 1.79.64 2.51.45.5-.11.93-.44 1.16-.9.56 0 1.18-.26 2.17-.32.67-.06 1.51.25 2.47.19.02.13.06.19.11.32 .37.75 1.07 1.09 1.81 1.03.74-.06 1.53-.51 2.17-1.25.6-.73 1.61-1.04 2.28-1.44.33-.19.6-.45.62-.82.02-.38-.19-.78-.68-1.32v-.1c-.16-.19-.24-.51-.32-.89-.08-.38-.18-.75-.47-1l-.18-.13a.34.34 0 0 0-.18-.06c.41-1.23.25-2.45-.17-3.55-.51-1.35-1.4-2.53-2.08-3.34-.76-.96-1.51-1.88-1.5-3.23.02-2.06.23-5.88-3.4-5.89zM11.6 4.4c.43 0 .8.27.95.66.07.18.1.36.1.55 0 .25-.07.5-.2.7-.04-.02-.08-.04-.13-.06-.1-.04-.19-.06-.27-.13.05-.06.14-.13.17-.19.05-.12.08-.25.08-.38 0-.13-.03-.25-.08-.36-.05-.12-.12-.18-.22-.24-.08 0-.16.06-.24.18-.08.11-.13.23-.13.36 0 .08.01.16.02.24-.18-.06-.41-.13-.57-.19-.01-.06-.02-.12-.02-.18 0-.27.1-.53.27-.72.13-.14.3-.22.5-.22zm-2.43.06c.06 0 .12.01.18.04.36.18.6.45.69.72.14.45.14.96.14 1.38v.1c-.03.15-.04.25-.12.38-.09.15-.24.28-.43.36-.06.02-.12.05-.18.05-.06 0-.13-.02-.18-.06a.47.47 0 0 1-.18-.36c-.02-.15-.06-.36-.02-.48.06-.15.06-.36.06-.51 0-.15 0-.36.06-.54.06-.18.18-.36.24-.48.06-.06.18-.12.18-.12zm5.66 2.1c.05 0 .1.01.15.04.18.12.27.36.32.6.05.24.05.53.07.85.01.31-.01.59-.13.84-.11.24-.3.43-.5.43a.6.6 0 0 1-.3-.12c-.06-.06-.12-.18-.12-.36 0-.06-.06-.12-.12-.18-.06-.06-.12-.12-.18-.12-.07 0-.13.06-.19.12-.06.06-.12.18-.12.36 0 .06-.06.18-.12.24-.06.06-.18.12-.3.12-.13 0-.3-.06-.36-.18-.06-.12-.06-.36-.06-.54 0-.18.06-.36.06-.54 0-.18 0-.36.06-.48.06-.12.18-.18.3-.24z"/></svg>Linux <span class="soon">AppImage</span></a>
-      <span class="btn btn-os disabled" aria-disabled="true">macOS<span class="soon">soon</span></span>
-    </div>
-    <p class="muted">Public beta · Windows &amp; Linux x64 · Free for personal use · Local &amp; private</p>
-    <p class="muted">The command-line build is portable — no installer, no SmartScreen prompt, ideal for locked-down PCs. <a href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v0.9.8.4">How it works</a></p>
-  </div>
-  <div class="hero-img">
-    <img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/hero-v098.png?v=0.9.8" width="1280" height="720" alt="The Neonmem app — a dense, living memory brain of a real project beside the chat that fills it" loading="eager">
-  </div>
-</section>
+	<section id="about" class="hero">
+		<div class="wrap">
+			<h1>Neonmem Workspace</h1>
+			<p class="kicker">A memory-based agentic IDE.</p>
+			<p class="lead">Neonmem Workspace uses neonmem cartridges to enhance the Claude Code experience, adding capabilities that help the agent make decisions based on a prism of experience held in the cartridge.</p>
+			<p class="dim measure">It is for any type of development — traditional, agentic, or vibe coding — and extends each of these approaches.</p>
+			<figure class="hero-shot-wrap">
+				<div class="shot hero-shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/home.png" width="1440" height="900" alt="Neonmem Workspace: the Brain memory visualiser on the left, the project's memory Home in the centre showing the Labyrinth project's decisions and active plans, and the agent panel on the right."></div>
+				<figcaption class="shot-cap"><b>Project Home</b> — a live recap regenerated from the project's own memory, beside the Brain memory graph.</figcaption>
+			</figure>
+		</div>
+	</section>
 
-<section id="what" class="band narrow">
-  <h2>What memory <span class="grad">is</span></h2>
-  <p class="center narrow">Memory is the capture of the experience you and your agent live through as you work. It keeps the important decisions, the milestones, the successes and the failures — because all of it is part of the experience.</p>
-  <p class="center narrow" style="opacity:.92">Neonmem carries that experience, and it holds a self-contained vector database with all the data your project needs. Neonmem is a format, and it is an application that improves the way you work with your agent.</p>
-</section>
+	<section id="cartridge">
+		<div class="wrap">
+			<p class="eyebrow">The Neonmem cartridge</p>
+			<h2>A single-file, multi-layer memory store with built-in vector storage.</h2>
+			<p class="dim measure">A cartridge holds a project's experience as a typed graph. It is little-endian, page-aligned, and begins with a 64-byte header; the sections below carry the memory itself.</p>
 
-<section class="band">
-  <h2>A memory that <span class="grad">stores experience.</span></h2>
-  <p class="center narrow">Agents are stateless between sessions, so it's all about context — better context, better result. But what if the context is big? What if it outgrows you? What if your project is complex, with a lot of documents and a large, specific codebase? For your average agent it will be hard to help you without knowing these things. What if your current task chain is long, and to finish the last step you need to remember the first? Neonmem gives the agent an instrument to keep these things in mind — your decisions, the rationale behind them, the approaches you ruled out, and of course the failures. Over time it build expirience grid that allow you agnet to be more presise to exact you approaches  and prpeferences.</p>
-  <p class="center narrow" style="opacity:.92"><strong>The idea behind all of this is to augment both the person and the agent, not to replace.</strong> This tool is here to help you and your agent keep it all in mind — to share the same experience, to be on the same page.</p>
-</section>
+			<div class="cols" style="margin-top:28px">
+				<div class="card">
+					<h3>Nodes</h3>
+					<p>Fixed-size records. Each holds a type — observation, question, hypothesis, conclusion, resolution, rule, dead-end, plan, procedure — with a confidence and relevance score, timestamps, an edge count, and an index into the vector store.</p>
+				</div>
+				<div class="card">
+					<h3>Edges</h3>
+					<p>Typed, directed relationships between nodes: led-to, blocked-by, supports, contradicts, part-of. A node stores its first edges inline, with an overflow table for high-degree nodes.</p>
+				</div>
+				<div class="card">
+					<h3>Vectors</h3>
+					<p>One embedding per node, int8-quantized with a per-vector scale (v = q·scale). The vectors are L2-normalized, so cosine similarity is a dot product. Recall is exact, over the vectors in the cartridge.</p>
+				</div>
+				<div class="card">
+					<h3>Integrity</h3>
+					<p>Node text is stored in an LZ4-compressed string table; a footer carries a per-section CRC32 and a content hash. The vectors are part of the file — there is no external database.</p>
+				</div>
+			</div>
 
-<section class="features">
-  <h2>A durable <span class="grad">understanding</span></h2>
-  <p class="center narrow">The Neonmem memory cartridge gives the agent a durable understanding of the project that deepens with every session — on top of the flat facts it gathers along the way.</p>
-  <div class="grid three">
-    <div class="card"><h3>Knows your team</h3><p>Conventions, preferences and standards — captured once and applied consistently across every session making expirience grid for each advice agent give to you.</p></div>
-    <div class="card"><h3>Knows the project</h3><p>Why each decision was made, what was tried, and what failed.</p></div>
-  </div>
-</section>
+			<div class="spec" style="margin-top:22px">
+<span class="k">magic</span>   ARIN &nbsp;·&nbsp; <span class="k">header</span> 64B &nbsp;·&nbsp; <span class="k">sections</span> nodes / edges / vectors / strings &nbsp;·&nbsp; <span class="k">footer</span> CRC32 + content-hash
+			</div>
 
-<section id="remembers" class="band">
-  <h2>What it gives your agent</h2>
-  <div class="grid features-grid">
-    <div class="card"><h3>The reasoning</h3><p>Decisions, debates and resolutions — the rationale, so calls are revisited with context instead of relitigated.</p></div>
-    <div class="card"><h3>The dead-ends</h3><p>Approaches that failed, with the reason — so the agent stops re-proposing what has already been ruled out.</p></div>
-    <div class="card"><h3>The whole workflow</h3><p>Engineering, operations, configuration — context that spans the entire workflow.</p></div>
-    <div class="card"><h3>Long-form work</h3><p>For writing and research, Neonmem tracks every entity, thread, decision and discarded idea — and when each was decided.</p></div>
-    <div class="card"><h3>Convert existing work <span class="badge">Importer</span></h3><p>No need to start from scratch. Point Neonmem at your <strong>documents, code and past transcripts</strong> and it <strong>builds the fact pool inside the cartridge</strong> — keeping it all in one place for the agent.</p></div>
-  </div>
-</section>
+			<h3 style="margin:44px 0 14px; font-size:18px">Layers</h3>
+			<ul class="tiers">
+				<li><span class="t">reflex</span><span class="d">Rules and invariants that always apply.</span></li>
+				<li><span class="t">short-term</span><span class="d">The decisions and observations of the current effort.</span></li>
+				<li><span class="t">long-term</span><span class="d">Knowledge retained across sessions.</span></li>
+			</ul>
 
-<section class="features">
-  <h2>Memory that <span class="grad">maintains itself</span></h2>
-  <div class="grid three">
-    <div class="card"><h3>Automatic consolidation</h3><p>A background pass decays noise, merges duplicates and promotes what's actually used — so the memory stays sharp and relevant as it grows, instead of bloating.</p></div>
-    <div class="card"><h3>Time-aware recall</h3><p>Ask "what was decided three days ago?" and retrieve that day's context — the decisions and dead-ends, in order.</p></div>
-	<div class="card"><h3>Topic recall</h3><p>Ask "what was decided for this topic?" and retrieve what you worked on for it — and what happened.</p></div>
+			<h2 style="margin:64px 0 18px">PRISM — reasoning through the graph</h2>
+			<p class="measure dim">Recall answers what is stored; PRISM reasons over how the stored items relate. It is based on Hopfield/Ising energy-based associative memory. For a query, anchor nodes are found by cosine similarity and their neighborhood is expanded into a subgraph. The subgraph is treated as a network of units: its edges define a coupling matrix J — supporting edges attract, contradicting and blocking edges repel — and node types define a field bias h. The unit states relax by</p>
+			<div class="formula">a &nbsp;&larr;&nbsp; &sigma;( &beta; ( J&middot;a + h ) )</div>
+			<p class="measure dim">until they settle into a low-energy configuration. That configuration is read out as attractors — the answer — repelled regions — dead-ends to avoid — and active constraints — the rules that apply.</p>
 
-    <div class="card"><h3>Secure</h3><p>The memory is write-guarded: only the agent writes, through controlled tools. False or unauthorized entries can't be planted.</p></div>
-  </div>
-</section>
+			<div class="cols" style="margin-top:28px">
+				<div class="card">
+					<h3>Embeddings</h3>
+					<p>Text is embedded with the IBM Granite-30M model, exported to fp16 ONNX and run in-process. A string is tokenized, passed through one forward pass, and the last hidden state at the CLS position is L2-normalized to a 384-dimensional unit vector. The same model runs at write and read time.</p>
+				</div>
+				<div class="card">
+					<h3>Capture</h3>
+					<p>What a turn of work adds is scored by an energy-like salience — <span style="font-family:var(--mono);color:var(--ink)">σ(β·L)·L</span> — combining novelty, node-type weight, and the relief of resolving an open thread. Items above a write threshold are kept; a plan is a forward-looking commitment and is kept even when it relates to existing memory.</p>
+				</div>
+			</div>
+		</div>
+	</section>
 
-<section id="journeys" class="features">
-  <h2>One thread through any <span class="grad">labyrinth</span></h2>
-  <p class="center narrow">Coding, operations, creative work — the same living memory, which you watch form in real-time 3D as you go. Three journeys:</p>
+	<section id="journey">
+		<div class="wrap">
+			<p class="eyebrow">Developer journey — Labyrinth</p>
+			<div class="journey-lead">
+				<div>
+					<h2>Building a maze game, one decision at a time.</h2>
+					<p class="dim">A developer builds a terminal maze game with the agent. Each decision, each dead-end, and each rule is written to the cartridge as it happens. Later, the agent reasons through that record rather than the current buffer alone — it does not re-open a settled question, does not repeat an approach that already failed, and surfaces a rule at the point it applies.</p>
+					<p class="dim">The editor completes code from the same memory: type into <span style="font-family:var(--mono);color:var(--ink)">save_game(state)</span> and the ghost-text continues from what the project decided about saving.</p>
+				</div>
+				<ul class="trace">
+					<li><span class="type">Resolution</span><p class="what">The labyrinth uses a grid maze generated with recursive backtracking.</p></li>
+					<li><span class="type">Dead-end</span><p class="what">Pickling the game state breaks across Python versions — do not use it.</p></li>
+					<li><span class="type">Resolution</span><p class="what">Game saves use JSON slots written to the saves directory.</p></li>
+					<li><span class="type">Rule</span><p class="what">Never write save files outside the saves directory.</p></li>
+					<li><span class="type">Plan</span><p class="what">Ship the save/load system with checkpoints and a load command.</p></li>
+				</ul>
+			</div>
 
-  <div class="journey-block">
-    <div class="journey-head">
-      <span class="tag">Importer</span>
-      <h3>Bootstrap with Neonmem</h3>
-      <p>When you start, the memory is empty — but with the importer you can bootstrap memories from a project you've already worked on: reference material, and the decisions you made along the way with your agent. All of it can be imported into memory. The importer treats each correctly — your <strong>docs &amp; code</strong> become a searchable pool, your <strong>agent chats</strong> become the decisions, dead-ends and rules worth keeping, and any file a chat references is pulled in too. Then ask <em>"what is ARC?"</em> and it answers from your documents, and create memory base on your  reaction.</p>
-    </div>
-    <a class="journey-hero" href="journeys/importer"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/journeys/importer/importer-s04.png?v=0.9.8" style="max-width:100%;height:auto" alt="The two-level importer result — Facts loaded and Memories created" loading="lazy"></a>
-    <p class="center"><a class="jlink" href="journeys/importer">Walk the full importer journey, step by step →</a></p>
-  </div>
+			<figure style="margin-top:44px">
+				<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/ghost-text.png" width="1440" height="900" loading="lazy" alt="The editor open on game.py. Inside a new save_game function, ghost text completes the line with the project's own decision: the game saves use JSON slots written to the saves directory."></div>
+				<figcaption class="shot-cap"><b>Recall in the editor</b> — inside <span style="font-family:var(--mono);color:var(--ink-dim)">save_game()</span>, the completion continues from the decision the project already made about saving.</figcaption>
+			</figure>
+			<figure style="margin-top:32px">
+				<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/commands.png" width="1440" height="900" loading="lazy" alt="The command palette filtered to Neonmem commands: Open Project Home, Import to Memory, Export Memory Cartridge, Open Memory Cartridge, Switch Active Project, Toggle Memory Kill Switch, and more."></div>
+				<figcaption class="shot-cap"><b>The memory surface</b> — open the Home, import to memory, export or open a <span style="font-family:var(--mono);color:var(--ink-dim)">.neonmem</span> cartridge, switch the active project, or toggle the kill switch.</figcaption>
+			</figure>
+		</div>
+	</section>
 
-  <div class="journey-block">
-    <div class="journey-head">
-      <span class="tag">Coding</span>
-      <h3>The agent shares experience with you</h3>
-      <p>From day one, the agent records the architectural calls like Postgres over Mongo, the authentication constraint, the in-memory cache that wouldn't scale and was ruled out. Weeks later, before it re-proposes that cache, it recalls why it was rejected. Ask <em>"what was decided three days ago?"</em> and retrieve that day's context. The memory consolidates over time, and the agent works the codebase with the full history behind it.</p>
-    </div>
-    <a class="journey-hero" href="journeys/coding"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/journeys/coding/coding-s22.png?v=0.9.8" width="640" height="600" alt="The Labyrinth memory, fully formed" loading="lazy"></a>
-    <p class="center"><a class="jlink" href="journeys/coding">Walk the full journey, step by step →</a></p>
-  </div>
-
-  <div class="journey-block">
-    <div class="journey-head">
-      <span class="tag">DevOps</span>
-      <h3>Big projects have tribal knowledge — it can be stored too</h3>
-      <p>A locked-down network: egress through one proxy, a firewall that drops anything unusual, a VPN that resets nightly. Together you find the exact path — the proxy variables, the one open port, the cert workaround — and the approaches the security policy silently killed. Neonmem keeps every constraint and dead-end, so next incident your agent recalls the working route instead of tripping over the same wires again.</p>
-    </div>
-    <a class="journey-hero" href="journeys/devops"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/journeys/devops/devops-s21.png?v=0.9.8" width="640" height="600" alt="The locked-down deploy memory, fully formed" loading="lazy"></a>
-    <p class="center"><a class="jlink" href="journeys/devops">Walk the full journey, step by step →</a></p>
-  </div>
-
-  <div class="journey-block">
-    <div class="journey-head">
-      <span class="tag">Writing</span>
-      <h3>Never lose the plot you wove</h3>
-      <p>You're writing a play with your agent (and yes you can do so). Act by act the cast grows — a character slipped in at scene two, a motive planted in act one that pays off in act three, a subplot you cut but might revive. Neonmem remembers every character, thread and twist, and the ones you abandoned. Come back months later and your agent still holds the whole tapestry. Even celebrated novelists stall when a saga outgrows one mind — this is the thread back through it.</p>
-    </div>
-    <a class="journey-hero" href="journeys/writer"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/journeys/writer/writer-s21.png?v=0.9.8" width="640" height="600" alt="The Glass Lighthouse memory, fully formed" loading="lazy"></a>
-    <p class="center"><a class="jlink" href="journeys/writer">Walk the full journey, step by step →</a></p>
-  </div>
-
-  <div class="journey-outro">
-    <img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/brain-hero.png?v=0.9.8" width="480" height="533" alt="A Neonmem memory grown into a full brain" loading="lazy">
-    <p class="center narrow">Three domains, one pattern: every memory starts nearly empty and <strong>grows into a full brain-like structure</strong> — neuron by neuron, two hemispheres around a bright reflex core — as your agent learns your project. It doesn't just store data, it gathers experience.</p>
-  </div>
-</section>
-
-<section id="cartridge" class="features">
-  <h2><span class="grad">memory cartridge</span></h2>
-  <p class="center narrow">Neonmem is a single portable <code>.neonmem</code> file that carries everything the agent needs to be aligned with you and the project — the facts, the structure, and an embedded model trained on it — and it stays on your disk, under your control.</p>
-  <div class="journey-outro">
-    <img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/comprehension/brain-subsystems.png?v=0.9.8" width="560" height="525" alt="A Neonmem memory coloured by self-organised subsystems, with a glowing comprehension core" loading="lazy">
-    <p class="center narrow">Load the cartridge and the agent  gets the <strong>whole understanding at once</strong>: what the project is, how it's organised, and exactly where you left off.</p>
-  </div>
-  <div class="grid three">
-    <div class="card"><h3>A reasoning graph</h3><p>Typed nodes and edges — observations, decisions, dead-ends, rules, procedures and <strong>plans</strong> — modelling the past, the present and the intended direction.</p></div>
-    <div class="card"><h3>A comprehension layer</h3><p>Neonmem clusters the memory into <strong>subsystems</strong> and distils a <strong>project skeleton and resume cursor</strong> — its structure and the current open thread. A new session receives the full picture, not a cold scroll-back.</p></div>
-    <div class="card"><h3>An embedded model</h3><p>A compact model, <strong>trained on your own memory</strong>, ranks what matters, senses tone and classifies what's captured. Self-contained and fully offline, it travels inside the cartridge.</p></div>
-  </div>
-</section>
-
-<section id="importer" class="features">
-  <h2>The importer — <span class="grad">a good way to start</span></h2>
-  <p class="center narrow">Neonmem builds memory as you work; the importer <strong>converts what you already have</strong>. It reads your documents, code and agent history and builds a deduplicated, searchable knowledge base. <a href="/devlog/ai-importer-rag-memory">How it works →</a></p>
-
-  <div class="journey-block">
-    <div class="journey-head">
-      <span class="tag">In practice</span>
-      <h3>Bring an existing project into memory</h3>
-      <p>Consider an established project: a folder of design documents and API specifications, a set of <strong>meeting transcripts</strong>, and a codebase larger than any one person can hold in mind. Rather than re-explaining it each session, point the importer at all of it — in a single pass it becomes a <strong>connected memory</strong>: the decisions, the endpoints, the call graph and the plans. The agent opens already aware of the project.</p>
-      <p>Run it again whenever things move and the importer <strong>updates the memory in place</strong> — merging what's new, skipping what it already knows — so the cartridge stays current as the work does.</p>
-    </div>
-    <a class="journey-hero" href="#cartridge" style="max-width:820px;margin:18px auto 0"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/importer/builder-preview.png?v=0.9.8" style="max-width:820px" alt="The Neonmem importer: folders and files become a searchable pool, agent chats become the decisions worth keeping" loading="lazy"></a>
-    <p class="center muted">The actual tool: <strong>folders &amp; files</strong> become a searchable pool, <strong>agent chats</strong> become the decisions and dead-ends worth keeping — and any file a chat references is pulled in too</strong>.</p>
-  </div>
-
-  <div class="journey-outro">
-    <img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/importer/import-subsystems.png?v=0.9.8" width="560" height="525" alt="The imported facts and call graph as a connected memory, organised into subsystems" loading="lazy">
-    <p class="center narrow">…and out comes a <strong>connected memory</strong> — the facts and the call graph, self-organised into subsystems, ready to hand straight to your agent.</p>
-  </div>
-
-  <div class="grid three">
-    <div class="card"><h3>Reads documents and notes</h3><p>Markdown, text, PDF, Word and meeting transcripts — extracting the facts (endpoints, configuration, decisions) <strong>and the plans</strong> (roadmaps, goals, next steps), and discarding the prose.</p></div>
-    <div class="card"><h3>Maps your code</h3><p>Parses source into functions, classes and a <strong>call graph</strong> — what is defined where and what calls what — so the agent understands the structure of the codebase.</p></div>
-    <div class="card"><h3>Creates and updates</h3><p>Build a new memory, or re-run to <strong>update an existing one</strong> — new facts merged, duplicates skipped, secrets redacted, provenance retained. Fully local.</p></div>
-    <div class="card"><h3>Built-in offline AI</h3><p>An embedded model performs the comprehension — <strong>no cloud, no GPU, no API key</strong>. Runs on any modern CPU and ships inside the application; fully offline.</p></div>
-    <div class="card"><h3>A searchable knowledge layer</h3><p>Imports form a canonical, <strong>deduplicated, searchable</strong> facts layer with hybrid retrieval — and stale facts are pruned automatically, so the cartridge stays sharp as it grows.</p></div>
-    <div class="card"><h3>One consolidated cartridge</h3><p>Import your <strong>agent history</strong> (detected automatically), PDFs, documents and transcripts — the originals are retained, compressed and optionally <strong>encrypted</strong>, inside a single private store.</p></div>
-  </div>
-  <p class="center muted">One pass, and a pile of docs, transcripts and code becomes an understanding-ready cartridge of your whole project.</p>
-</section>
-
-<section class="band">
-  <h2>Works with your AI agent</h2>
-  <table class="agents">
-    <thead><tr><th>Agent</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Claude Code</strong></td><td><span class="ok">Full support</span></td></tr>
-      <tr><td><strong>GitHub Copilot / VS Code</strong></td><td><span class="beta">Experimental</span></td></tr>
-      <tr><td>More agents</td><td><span class="soon">Coming soon</span></td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="built" class="features">
-  <h2>Our technology</h2>
-  <p class="center narrow">Neonmem is a self-contained engine that runs entirely on your machine.</p>
-  <div class="grid tech">
-    <div class="card"><h3>A micro-AI, built in</h3><p>A compact model lives <em>inside</em> the app and does the understanding — reading your material and building searchable memory. <strong>No GPU, no cloud, no API key</strong>, on any CPU from the last decade.</p></div>
-    <div class="card"><h3>Grounded, not guessed</h3><p>Every prompt walks memory in order — reflexes → short → long → facts — and answers from <strong>your sources</strong>, or honestly says it doesn't know. No confabulated facts.</p></div>
-    <div class="card"><h3>A graph engine</h3><p>Typed nodes and edges model reasoning — decisions, dead-ends, rules and <strong>plans</strong> for where you're going.</p></div>
-    <div class="card"><h3>A comprehension layer</h3><p>A self-built model clusters your memory into subsystems and a resume skeleton, so a fresh session understands the whole project at once.</p></div>
-    <div class="card"><h3>A memory file</h3><p>Your memory is a portable file on <em>your</em> disk — it grows as you work, and it's yours to keep, back up and move between projects.</p></div>
-    <div class="card"><h3>Works with any agent</h3><p>Through an open agent-integration standard, Neonmem plugs into compatible AI assistants — your memory travels with you across tools.</p></div>
-  </div>
-</section>
-
-<section id="roadmap" class="band">
-  <h2>Roadmap</h2>
-  <p class="center narrow">In active development.</p>
-  <div class="roadmap">
-    <span class="chip">Linux (AppImage) <em>available</em></span>
-    <span class="chip">macOS installer <em>building</em></span>
-    <span class="chip">Cursor <em>soon</em></span>
-    <span class="chip">Cline <em>soon</em></span>
-    <span class="chip">Windsurf <em>soon</em></span>
-    <span class="chip">Zed <em>soon</em></span>
-    <span class="chip">JetBrains AI <em>soon</em></span>
-    <span class="chip">…more agents <em>coming</em></span>
-  </div>
-  <p class="center muted">Want your agent or platform supported? <a href="mailto:support@neonmem.com?subject=Neonmem%20support%20request">Tell us</a> and we'll prioritize it.</p>
-</section>
-
-<section id="news" class="band">
-  <h2>What's <span class="grad">new</span></h2>
-  <p class="center narrow muted">Release notes &amp; product news — what we just shipped and what we're working on. <a href="/devlog">Read the full dev log →</a> · <a href="https://github.com/neonmem-lab/neonmem-app/releases">All releases →</a></p>
-  <div class="grid features-grid">
-    <div class="card">
-      <h3>0.9.0 — The memory cartridge <span class="muted">· Jun 2026</span></h3>
-      <p>Your memory becomes a <strong>cartridge</strong>: one file carrying the reasoning graph, a comprehension layer that understands how it all fits, and a small model trained on your own memory — all offline. Load it and your agent is instantly up to speed.</p>
-      <ul>
-        <li>Memory cartridge — graph + comprehension + model, in one portable file.</li>
-        <li><strong>Plans</strong> (where you're going), a brain that organises itself into subsystems, and a smarter importer.</li>
-        <li>Three small <strong>self-built</strong> models (no third-party LLM) + a big-memory performance pass.</li>
-      </ul>
-      <p><a href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v0.9.0">Full 0.9.0 release notes →</a> · <a href="/devlog">Developer Corner →</a></p>
-    </div>
-    <div class="card">
-      <h3>Notes from the developers</h3>
-      <p>Neonmem began with a simple frustration: every session, our agent forgot everything — the decisions, the dead-ends, the <em>why</em>. So we gave it a memory that lives with the work and grows like one. The new brain view is the part we're proudest of — you don't just store memories, you <strong>watch your agent learn</strong>.</p>
-      <p>We're a small team shipping fast in public beta, and your bug reports genuinely shape what we build next. Thank you for trying it. — <strong>The Neonmem team</strong></p>
-      <p class="muted"><a href="mailto:support@neonmem.com?subject=Neonmem%20feedback">Tell us what you think →</a></p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="pricing">
-  <h2>Pricing</h2>
-  <p class="center narrow">Neonmem is free to use for personal, hobby, research and nonprofit projects during the public beta. For commercial or team use, get in touch and we'll find a license that fits.</p>
-  <p class="center"><a class="btn btn-lg" href="mailto:sales@neonmem.com?subject=Neonmem%20pricing%20enquiry">Contact sales</a></p>
-</section>
-
-<section id="faq" class="band narrow faq">
-  <h2>FAQ</h2>
-  <details><summary>What is Neonmem?</summary><p>A live, dynamic memory that makes your AI personal. It learns how you think and work — remembering decisions, dead-ends and reasoning across sessions — so your agent becomes a colleague who knows you. And you can watch it in 3D.</p></details>
-  <details><summary>Does it only help with code?</summary><p>No — coding, DevOps and config, and also creative writing (characters, plot, loose ends, rejected ideas).</p></details>
-  <details><summary>Is my work private?</summary><p>Yes — Neonmem runs locally with offline embeddings. No cloud calls, no API cost.</p></details>
-  <details><summary>Which platforms?</summary><p>Windows and Linux (AppImage) today. macOS is on the roadmap.</p></details>
-  <details><summary>Where is my memory stored?</summary><p>In a single local <code>.neonmem</code> file — a <strong>memory cartridge</strong> in Neonmem's own compact binary format. It carries the reasoning graph, quantized offline embeddings, the comprehension layer (subsystems + resume skeleton) and the small self-built model — all in one file. No database, no cloud: it stays on your machine and is the only thing your agent reads and writes.</p></details>
-  <details><summary>What's a "memory cartridge"?</summary><p>It's the whole mind in one portable file: the graph of what happened, the understanding of how it fits together, and a small model trained on your memory. Load it and your agent is instantly up to speed — back it up, move it between projects, keep it forever. It's yours.</p></details>
-</section>
+	<section id="download">
+		<div class="wrap">
+			<p class="eyebrow">Download</p>
+			<h2>Neonmem Workspace for Windows.</h2>
+			<p class="dim measure">The installer bundles the editor, the memory engine, and the embedding model — nothing else to set up. Neonmem Workspace runs the agent through Claude; install Claude Code to use the memory features.</p>
+			<div class="dl">
+				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/latest">Download for Windows</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/latest">Release notes</a>
+			</div>
+			<div class="soon"><span>Linux — coming</span><span>SDK — coming</span></div>
+		</div>
+	</section>
 </main>
 
 <footer>
-  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;justify-content:center;text-align:left;max-width:900px;margin:0 auto 28px">
-    <div>
-      <p style="margin:0 0 10px"><img src="assets/logo.svg" width="20" height="20" alt="" style="vertical-align:-4px"> <strong>Neonmem</strong></p>
-      <p class="muted" style="margin:0;max-width:240px">A persistent, private memory for AI agents. Local, offline, yours.</p>
-    </div>
-    <div>
-      <p style="margin:0 0 8px;font-weight:600">Product</p>
-      <p class="muted" style="margin:0;line-height:1.9"><a href="/#cartridge">The cartridge</a><br><a href="/#importer">Importer</a><br><a href="/#journeys">Use cases</a><br><a href="/#pricing">Pricing</a></p>
-    </div>
-    <div>
-      <p style="margin:0 0 8px;font-weight:600">Resources</p>
-      <p class="muted" style="margin:0;line-height:1.9"><a href="/devlog">Dev Corner</a><br><a href="https://github.com/neonmem-lab/neonmem-app/releases">Releases</a><br><a href="/#faq">FAQ</a><br><a href="/report">Report a bug</a></p>
-    </div>
-    <div>
-      <p style="margin:0 0 8px;font-weight:600">Company</p>
-      <p class="muted" style="margin:0;line-height:1.9"><a href="mailto:support@neonmem.com">Support</a><br><a href="mailto:sales@neonmem.com">Sales</a><br><a href="https://github.com/neonmem-lab/neonmem-app/blob/main/COMMERCIAL.md">Commercial license</a></p>
-    </div>
-  </div>
-  <p class="muted">© 2026 Neonmem · Public beta · Free for personal use; commercial license available.</p>
+	<div class="wrap">
+		<span>Neonmem Workspace — a Visual Studio Code fork that works natively with the Neonmem memory format.</span>
+		<span><a href="https://github.com/neonmem-lab/neonmem-app/releases/latest">Releases</a> · neonmem.com</span>
+	</div>
 </footer>
-
 </body>
 </html>
