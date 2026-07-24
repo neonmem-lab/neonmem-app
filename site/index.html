@@ -103,6 +103,16 @@
 	.trace li::before { content: ""; position: absolute; left: -5px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(47,129,247,0.8); }
 	.trace .type { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); }
 	.trace .what { color: var(--ink); margin: 2px 0 0; }
+	.trace .type.warn { color: #f2727b; }
+	.trace .type.rule { color: var(--node-c); }
+	.trace .type.recall { color: var(--node-a); }
+	.trace li.warn::before { background: #f2727b; box-shadow: 0 0 8px rgba(242,114,123,0.8); }
+	.trace li.rule::before { background: var(--node-c); box-shadow: 0 0 8px rgba(242,180,92,0.8); }
+	.trace li.recall::before { background: var(--node-a); box-shadow: 0 0 8px rgba(87,217,163,0.8); }
+	.arc { display: grid; gap: 30px; margin-top: 4px; }
+	.act > .act-h { font-family: var(--mono); font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-dim); margin: 0 0 12px; }
+	.act > .act-h b { color: var(--accent); font-weight: 600; }
+	.arc-close { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--hair); color: var(--ink-dim); }
 
 	.dl { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 26px 0 10px; }
 	.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff; font-weight: 600; padding: 14px 24px; border-radius: 10px; font-size: 15px; }
@@ -208,20 +218,62 @@
 	<section id="journey">
 		<div class="wrap">
 			<p class="eyebrow">Developer journey — Labyrinth</p>
-			<div class="journey-lead">
-				<div>
-					<h2>Building a maze game, one decision at a time.</h2>
-					<p class="dim">A developer builds a terminal maze game with the agent. Each decision, each dead-end, and each rule is written to the cartridge as it happens. Later, the agent reasons through that record rather than the current buffer alone — it does not re-open a settled question, does not repeat an approach that already failed, and surfaces a rule at the point it applies.</p>
-					<p class="dim">The editor completes code from the same memory: type into <span style="font-family:var(--mono);color:var(--ink)">save_game(state)</span> and the ghost-text continues from what the project decided about saving.</p>
+			<h2>Building a maze game, one decision at a time.</h2>
+			<p class="dim measure" style="margin-bottom:8px">You build a small terminal game — <span style="color:var(--ink)">The Labyrinth</span> — by talking through it with the agent, one decision at a time. You do not ask it to remember anything. As you frame the project, argue a design, hit a wall, and set a rule, the memory forms on its own: each turn is classified and written to the cartridge as a typed node. By the end, the whole reasoning trail is there to recall and reason through.</p>
+
+			<div class="arc">
+				<div class="act">
+					<p class="act-h"><b>Act 1</b> — Frame the project</p>
+					<ul class="trace">
+						<li><span class="type">Context</span><p class="what">A single-file terminal game in Python: rooms connected by exits, the player looks for the way out.</p></li>
+						<li><span class="type">Observation</span><p class="what">Each room has a name, a description, and exits — north, south, east, west.</p></li>
+						<li><span class="type">Question</span><p class="what">Should rooms be plain dictionaries or proper classes?</p></li>
+					</ul>
 				</div>
-				<ul class="trace">
-					<li><span class="type">Resolution</span><p class="what">The labyrinth uses a grid maze generated with recursive backtracking.</p></li>
-					<li><span class="type">Dead-end</span><p class="what">Pickling the game state breaks across Python versions — do not use it.</p></li>
-					<li><span class="type">Resolution</span><p class="what">Game saves use JSON slots written to the saves directory.</p></li>
-					<li><span class="type">Rule</span><p class="what">Never write save files outside the saves directory.</p></li>
-					<li><span class="type">Plan</span><p class="what">Ship the save/load system with checkpoints and a load command.</p></li>
-				</ul>
+				<div class="act">
+					<p class="act-h"><b>Act 2</b> — A design debate</p>
+					<ul class="trace">
+						<li><span class="type">Hypothesis</span><p class="what">A dict of room-name → exits is the simplest thing that could work.</p></li>
+						<li><span class="type">Debate</span><p class="what">A hand-crafted fixed maze versus a procedurally generated one.</p></li>
+						<li><span class="type">Argument</span><p class="what">For procedural: infinite replayability. Against: harder to make it feel designed, and harder to test.</p></li>
+						<li><span class="type">Resolution</span><p class="what">Hand-crafted maze for v1 — testable and tunable. Procedural can come later.</p></li>
+					</ul>
+				</div>
+				<div class="act">
+					<p class="act-h"><b>Act 3</b> — Build it, and hit a wall</p>
+					<ul class="trace">
+						<li><span class="type">Action</span><p class="what">Implement a parser that reads "go north" and moves the player — the first version of <span style="font-family:var(--mono)">labyrinth.py</span>.</p></li>
+						<li><span class="type">Conclusion</span><p class="what">The dict-of-rooms approach is clean and easy to extend — the call held up.</p></li>
+						<li class="warn"><span class="type warn">Dead-end</span><p class="what">Keeping player position and room state in module-level globals caused state bugs across functions. Do not.</p></li>
+						<li class="rule"><span class="type rule">Rule</span><p class="what">Keep the whole game state in one dict, passed around explicitly — never module globals.</p></li>
+					</ul>
+				</div>
+				<div class="act">
+					<p class="act-h"><b>Act 4</b> — Instant knowing</p>
+					<ul class="trace">
+						<li><span class="type">Procedure</span><p class="what">Add a room: (1) add it to the rooms dict, (2) wire its exits both ways, (3) add a test that it is reachable from start, (4) run pytest.</p></li>
+						<li class="rule"><span class="type rule">Reflex</span><p class="what">A standing principle: single-file, zero dependencies, runs on plain Python 3.</p></li>
+					</ul>
+				</div>
+				<div class="act">
+					<p class="act-h"><b>Act 5</b> — Lean on the memory</p>
+					<ul class="trace">
+						<li class="recall"><span class="type recall">Recall</span><p class="what">"Why did we go with a hand-crafted maze again?" — answered from memory: testability and feel.</p></li>
+						<li class="warn"><span class="type warn">Warns</span><p class="what">"Is it okay to keep game state in globals?" — it warns you: that is a recorded dead-end, and why.</p></li>
+						<li class="recall"><span class="type recall">Timeline</span><p class="what">"What did we decide today?" — the day's decisions, in order, not a guess.</p></li>
+						<li class="rule"><span class="type rule">Rule</span><p class="what">"What's our rule about dependencies?" — the single-file, zero-deps reflex.</p></li>
+					</ul>
+				</div>
+				<div class="act">
+					<p class="act-h"><b>Act 6</b> — Ingest, then let it sleep</p>
+					<ul class="trace">
+						<li><span class="type">Ingest</span><p class="what">Hand it a spec and a source file: endpoints, config values, and code structure — classes, methods, and a call graph — become connected nodes. The filler prose is skipped.</p></li>
+						<li><span class="type">Consolidate</span><p class="what">A consolidation pass merges near-duplicates and dims low-value chatter; the dead-end and the rules stay put. Reopen tomorrow — the decisions are still front and centre.</p></li>
+					</ul>
+				</div>
 			</div>
+
+			<p class="arc-close measure">Thirteen memory types formed while you worked — reflex and rules at the core, working notes and decisions around them — with nothing to remember by hand.</p>
 
 			<figure style="margin-top:44px">
 				<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/ghost-text.png" width="1440" height="900" loading="lazy" alt="The editor open on game.py. Inside a new save_game function, ghost text completes the line with the project's own decision: the game saves use JSON slots written to the saves directory."></div>
