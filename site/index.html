@@ -28,8 +28,8 @@
   "operatingSystem": "Windows",
   "description": "A vibecode-centric IDE. Generation runs on models built into the editor. A memory slot loads a Neonmem cartridge: a single file holding a typed memory graph with built-in vector storage, which the agent consults per turn.",
   "url": "https://neonmem.com/",
-  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.0/neonmem-workspace-1.2.0-Setup.exe",
-  "softwareVersion": "1.2.0",
+  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.1/neonmem-workspace-1.2.1-Setup.exe",
+  "softwareVersion": "1.2.1",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
@@ -112,6 +112,7 @@
 	.arc { display: grid; gap: 56px; margin-top: 10px; }
 	.act-row { display: grid; grid-template-columns: 5fr 7fr; gap: 40px; align-items: center; }
 	.act-row.rev .act-body { order: 2; }
+	.act-row.solo { grid-template-columns: 1fr; }
 	.act-h { font-family: var(--mono); font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-dim); margin: 0 0 14px; }
 	.act-h b { color: var(--accent); font-weight: 600; }
 	.act-figure { margin: 0; }
@@ -221,99 +222,73 @@
 
 	<section id="journey">
 		<div class="wrap">
-			<p class="eyebrow">Developer journey — Labyrinth</p>
-			<h2>Building a maze game, one decision at a time.</h2>
-			<p class="dim measure" style="margin-bottom:8px">You build a small terminal game — <span style="color:var(--ink)">The Labyrinth</span> — by talking through it with the agent, one decision at a time. You do not ask it to remember anything. As you frame the project, argue a design, hit a wall, and set a rule, the memory forms on its own: each turn is classified and written to the cartridge as a typed node. By the end, the whole reasoning trail is there to recall and reason through.</p>
+			<p class="eyebrow">What it produces</p>
+			<h2>Four unrelated requests, four programs that run.</h2>
+			<p class="dim measure" style="margin-bottom:8px">Each request below was given to the installed product as a single instruction, in a project containing nothing but an empty README. Different languages, no shared shape, and none of them resembling the material the bundled cartridges were built from. What follows is what the sessions produced and what the programs printed when they were run.</p>
+			<p class="dim measure" style="margin-bottom:28px">The results are judged by rules that know nothing about the request: every file must be valid in its own language, and if the work declares an entry point it must run and terminate. Nothing is checked against an expected filename or an expected symbol.</p>
 
 			<div class="arc">
 				<div class="act-row">
 					<div class="act-body">
-						<p class="act-h"><b>Act 1</b> — Frame the project</p>
+						<p class="act-h"><b>Python</b> — a CSV statistics tool</p>
 						<ul class="trace">
-							<li><span class="type">Context</span><p class="what">A single-file terminal game in Python: rooms connected by exits, the player looks for the way out.</p></li>
-							<li><span class="type">Observation</span><p class="what">Each room has a name, a description, and exits — north, south, east, west.</p></li>
-							<li><span class="type">Question</span><p class="what">Should rooms be plain dictionaries or proper classes?</p></li>
+							<li><span class="type">Request</span><p class="what">Read a CSV file and print the minimum, maximum and mean of a named column. Include a main that runs with a file path argument.</p></li>
+							<li><span class="type">Produced</span><p class="what"><code>main.py</code>, 32 lines.</p></li>
+							<li><span class="type recall">Ran</span><p class="what"><code>Usage: python script.py &lt;file_path&gt; &lt;column_name&gt;</code> — invoked without arguments, it states what it needs and exits.</p></li>
 						</ul>
 					</div>
 					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/journey/act1.png" width="1440" height="900" loading="lazy" alt="The Brain shows a small three-node cloud; the Project Home has nothing recorded yet."></div>
-						<figcaption class="shot-cap"><b>Three memories.</b> The frame, an observation, and an open question — a loose cloud in the Brain.</figcaption>
+						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/anyapp/editor.png" width="1440" height="900" loading="lazy" alt="The editor showing url-shortener.js, one of the files produced from an arbitrary request."></div>
+						<figcaption class="shot-cap"><b>The result in the editor.</b> A file written by the local model during one session, in a project that started empty.</figcaption>
 					</figure>
 				</div>
+
 				<div class="act-row rev">
 					<div class="act-body">
-						<p class="act-h"><b>Act 2</b> — A design debate</p>
+						<p class="act-h"><b>JavaScript</b> — a URL shortener</p>
 						<ul class="trace">
-							<li><span class="type">Hypothesis</span><p class="what">A dict of room-name → exits is the simplest thing that could work.</p></li>
-							<li><span class="type">Debate</span><p class="what">A hand-crafted fixed maze versus a procedurally generated one.</p></li>
-							<li><span class="type">Argument</span><p class="what">For procedural: infinite replayability. Against: harder to make it feel designed, and harder to test.</p></li>
-							<li><span class="type">Resolution</span><p class="what">Hand-crafted maze for v1 — testable and tunable. Procedural can come later.</p></li>
+							<li><span class="type">Request</span><p class="what">A module that stores short codes in memory, with a main that shortens two example URLs and prints the results.</p></li>
+							<li><span class="type">Produced</span><p class="what"><code>url-shortener.js</code>, 22 lines.</p></li>
+							<li><span class="type recall">Ran</span><p class="what"><code>Shortened URL 1: 8kmxuk -&gt; https://example.com</code></p></li>
 						</ul>
 					</div>
 					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/journey/act2.png" width="1440" height="900" loading="lazy" alt="The Brain graph has grown to seven nodes as the debate and its resolution are recorded."></div>
-						<figcaption class="shot-cap"><b>The debate and its resolution join.</b> Seven memories now — the cloud thickens as the design is argued out.</figcaption>
+						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/anyapp/brain.png" width="1440" height="900" loading="lazy" alt="The Brain view showing the project's memory after the session that produced the code."></div>
+						<figcaption class="shot-cap"><b>The project's memory afterwards.</b> A cartridge is created for the project on first use and holds what the session established.</figcaption>
 					</figure>
 				</div>
-				<div class="act-row">
+
+				<div class="act-row solo">
 					<div class="act-body">
-						<p class="act-h"><b>Act 3</b> — Build it, and hit a wall</p>
+						<p class="act-h"><b>Java</b> — a word-frequency counter</p>
 						<ul class="trace">
-							<li><span class="type">Action</span><p class="what">Implement a parser that reads "go north" and moves the player — the first version of <span style="font-family:var(--mono)">labyrinth.py</span>.</p></li>
-							<li><span class="type">Conclusion</span><p class="what">The dict-of-rooms approach is clean and easy to extend — the call held up.</p></li>
-							<li class="warn"><span class="type warn">Dead-end</span><p class="what">Keeping player position and room state in module-level globals caused state bugs across functions. Do not.</p></li>
-							<li class="rule"><span class="type rule">Rule</span><p class="what">Keep the whole game state in one dict, passed around explicitly — never module globals.</p></li>
+							<li><span class="type">Request</span><p class="what">Count word frequencies in a string and print the three most common words.</p></li>
+							<li><span class="type">Produced</span><p class="what"><code>WordFrequency.java</code>, 27 lines — compiled with <code>javac</code>, then run.</p></li>
+							<li><span class="type recall">Ran</span><p class="what"><code>This: 2</code></p></li>
 						</ul>
 					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/journey/act3.png" width="1440" height="900" loading="lazy" alt="Eleven memories in the Brain; the red node is the dead-end. The Home already recaps the decisions and the rule."></div>
-						<figcaption class="shot-cap"><b>The red node is the dead-end.</b> Eleven memories — and the Home already recaps the decisions and the new rule.</figcaption>
-					</figure>
 				</div>
-				<div class="act-row rev">
+
+				<div class="act-row solo">
 					<div class="act-body">
-						<p class="act-h"><b>Act 4</b> — Instant knowing</p>
+						<p class="act-h"><b>Python</b> — a self-playing guessing game</p>
 						<ul class="trace">
-							<li><span class="type">Procedure</span><p class="what">Add a room: (1) add it to the rooms dict, (2) wire its exits both ways, (3) add a test that it is reachable from start, (4) run pytest.</p></li>
-							<li class="rule"><span class="type rule">Reflex</span><p class="what">A standing principle: single-file, zero dependencies, runs on plain Python 3.</p></li>
+							<li><span class="type">Request</span><p class="what">Play a number-guessing game against itself using binary search, and print each guess.</p></li>
+							<li><span class="type">Produced</span><p class="what"><code>number_guessing_game.py</code>, 16 lines.</p></li>
+							<li><span class="type recall">Ran</span><p class="what"><code>Guess: 50</code> — the first step of the search, then the rest of the sequence.</p></li>
 						</ul>
 					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/journey/act4.png" width="1440" height="900" loading="lazy" alt="Thirteen memories; the procedure and the single-file reflex settle near the core and the cloud has become a brain."></div>
-						<figcaption class="shot-cap"><b>The cloud becomes a brain.</b> Thirteen memories — the procedure and the single-file reflex settle at the core.</figcaption>
-					</figure>
-				</div>
-				<div class="act-row">
-					<div class="act-body">
-						<p class="act-h"><b>Act 5</b> — Lean on the memory</p>
-						<ul class="trace">
-							<li class="recall"><span class="type recall">Recall</span><p class="what">"Why did we go with a hand-crafted maze again?" — answered from memory: testability and feel.</p></li>
-							<li class="warn"><span class="type warn">Warns</span><p class="what">"Is it okay to keep game state in globals?" — it warns you: that is a recorded dead-end, and why.</p></li>
-							<li class="recall"><span class="type recall">Timeline</span><p class="what">"What did we decide today?" — the day's decisions, in order, not a guess.</p></li>
-							<li class="rule"><span class="type rule">Rule</span><p class="what">"What's our rule about dependencies?" — the single-file, zero-deps reflex.</p></li>
-						</ul>
-					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/ghost-text.png" width="1440" height="900" loading="lazy" alt="The editor completes a line inside a function from the project's own recorded decision."></div>
-						<figcaption class="shot-cap"><b>Recall reaches the editor.</b> Inside a function, the completion continues from a decision the project already made.</figcaption>
-					</figure>
-				</div>
-				<div class="act-row rev">
-					<div class="act-body">
-						<p class="act-h"><b>Act 6</b> — Ingest, then let it sleep</p>
-						<ul class="trace">
-							<li><span class="type">Ingest</span><p class="what">Hand it a spec and a source file: endpoints, config values, and code structure — classes, methods, and a call graph — become connected nodes. The filler prose is skipped.</p></li>
-							<li><span class="type">Consolidate</span><p class="what">A consolidation pass merges near-duplicates and dims low-value chatter; the dead-end and the rules stay put. Reopen tomorrow — the decisions are still front and centre.</p></li>
-						</ul>
-					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/journey/home.png" width="1440" height="900" loading="lazy" alt="Project Home: fourteen memories, agent personality, recent decisions, an active plan to add procedural maze generation after v1, and the reflexes."></div>
-						<figcaption class="shot-cap"><b>Project Home</b> — the status counts, agent personality, the decisions, the active plan, and the reflexes, regenerated from memory each time it opens.</figcaption>
-					</figure>
 				</div>
 			</div>
 
-			<p class="arc-close measure">Thirteen memory types formed while you worked — reflex and rules at the core, working notes and decisions around them — with nothing to remember by hand.</p>
+			<h3 style="margin:52px 0 14px; font-size:18px">What the agent checks before it finishes</h3>
+			<p class="dim measure">Reading generated code establishes less than running it. A file can import cleanly, satisfy every pattern a reviewer would look for, and still not work: a function called with arguments its own declaration cannot accept raises at the first call, and a traversal that enqueues an item it never marks as seen never terminates at all. Both were observed and are checked for.</p>
+			<ul class="tiers" style="margin-top:18px">
+				<li><span class="t">runs it</span><span class="d">After a turn, the work is executed where it declares an entry point. A failure — including a program that does not terminate — is returned to the model, and a repair is kept only if the program then runs.</span></li>
+				<li><span class="t">arity</span><span class="d">A call whose arguments its own declaration cannot accept, in the same file.</span></li>
+				<li><span class="t">dependencies</span><span class="d">An import the project's declared Maven or Gradle dependencies cannot provide.</span></li>
+				<li><span class="t">delivery</span><span class="d">A task naming several files that produced only some of them.</span></li>
+			</ul>
 		</div>
 	</section>
 
@@ -323,9 +298,9 @@
 			<h2>Neonmem Workspace for Windows.</h2>
 			<p class="dim measure">Two ways to run it, both carrying the editor, the memory engine, and the embedding model. The installer sets it up on your PC; the portable build unzips and runs from a folder — nothing added to your system, keep it on a drive and take it with you.</p>
 			<div class="dl">
-				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.0/neonmem-workspace-1.2.0-Setup.exe">Download for Windows</a>
-				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.0/neonmem-workspace-1.2.0-portable-win32-x64.zip">Portable — no install</a>
-				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v1.2.0">Release notes</a>
+				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.1/neonmem-workspace-1.2.1-Setup.exe">Download for Windows</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.1/neonmem-workspace-1.2.1-portable-win32-x64.zip">Portable — no install</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v1.2.1">Release notes</a>
 			</div>
 			<div class="soon"><span>Linux — coming</span><span>SDK — coming</span></div>
 		</div>
