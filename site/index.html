@@ -28,8 +28,8 @@
   "operatingSystem": "Windows",
   "description": "A vibecode-centric IDE. Generation runs on models built into the editor. A memory slot loads a Neonmem cartridge: a single file holding a typed memory graph with built-in vector storage, which the agent consults per turn.",
   "url": "https://neonmem.com/",
-  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.3/neonmem-workspace-1.2.3-Setup.exe",
-  "softwareVersion": "1.2.3",
+  "downloadUrl": "https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.4/neonmem-workspace-1.2.4-Setup.exe",
+  "softwareVersion": "1.2.4",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
@@ -146,7 +146,8 @@
 		<nav>
 			<a href="#about">About</a>
 			<a href="#cartridge">Cartridge</a>
-			<a href="#journey">Journey</a>
+			<a href="#capabilities">Agent</a>
+			<a href="#journey">Session</a>
 			<a href="#download">Download</a>
 		</nav>
 	</div>
@@ -220,64 +221,28 @@
 		</div>
 	</section>
 
-	<section id="journey">
+	<section id="capabilities">
 		<div class="wrap">
-			<p class="eyebrow">What it produces</p>
-			<h2>Four unrelated requests, four programs that run.</h2>
-			<p class="dim measure" style="margin-bottom:8px">Each request below was given to the installed product as a single instruction, in a project containing nothing but an empty README. Different languages, no shared shape, and none of them resembling the material the bundled cartridges were built from. What follows is what the sessions produced and what the programs printed when they were run.</p>
-			<p class="dim measure" style="margin-bottom:28px">The results are judged by rules that know nothing about the request: every file must be valid in its own language, and if the work declares an entry point it must run and terminate. Nothing is checked against an expected filename or an expected symbol.</p>
+			<p class="eyebrow">What the agent does</p>
+			<h2>Generation, retrieval, analysis and planning, on local models.</h2>
+			<p class="dim measure">All four run against the models shipped inside the editor. Nothing is sent anywhere.</p>
 
-			<div class="arc">
-				<div class="act-row">
-					<div class="act-body">
-						<p class="act-h"><b>Python</b> — a CSV statistics tool</p>
-						<ul class="trace">
-							<li><span class="type">Request</span><p class="what">Read a CSV file and print the minimum, maximum and mean of a named column. Include a main that runs with a file path argument.</p></li>
-							<li><span class="type">Produced</span><p class="what"><code>main.py</code>, 32 lines.</p></li>
-							<li><span class="type recall">Ran</span><p class="what"><code>Usage: python script.py &lt;file_path&gt; &lt;column_name&gt;</code> — invoked without arguments, it states what it needs and exits.</p></li>
-						</ul>
-					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/anyapp/editor.png" width="1440" height="900" loading="lazy" alt="The editor showing url-shortener.js, one of the files produced from an arbitrary request."></div>
-						<figcaption class="shot-cap"><b>The result in the editor.</b> A file written by the local model during one session, in a project that started empty.</figcaption>
-					</figure>
+			<div class="cols" style="margin-top:28px">
+				<div class="card">
+					<h3>Code generation</h3>
+					<p>A turn produces files in the project, not a suggestion to copy. Whole-file writes carry the current contents; adding a method to an existing class generates the method alone and inserts it. Markup, configuration and data formats are written the same way as source.</p>
 				</div>
-
-				<div class="act-row rev">
-					<div class="act-body">
-						<p class="act-h"><b>JavaScript</b> — a URL shortener</p>
-						<ul class="trace">
-							<li><span class="type">Request</span><p class="what">A module that stores short codes in memory, with a main that shortens two example URLs and prints the results.</p></li>
-							<li><span class="type">Produced</span><p class="what"><code>url-shortener.js</code>, 22 lines.</p></li>
-							<li><span class="type recall">Ran</span><p class="what"><code>Shortened URL 1: 8kmxuk -&gt; https://example.com</code></p></li>
-						</ul>
-					</div>
-					<figure class="act-figure">
-						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/anyapp/brain.png" width="1440" height="900" loading="lazy" alt="The Brain view showing the project's memory after the session that produced the code."></div>
-						<figcaption class="shot-cap"><b>The project's memory afterwards.</b> A cartridge is created for the project on first use and holds what the session established.</figcaption>
-					</figure>
+				<div class="card">
+					<h3>Retrieval-augmented grounding</h3>
+					<p>Each turn embeds the request and recalls from the project's cartridge before the model runs. What is retrieved is reduced to a contract — declarations, annotations and query-scored lines under a token budget — rather than whole files, so it informs the answer without displacing it.</p>
 				</div>
-
-				<div class="act-row solo">
-					<div class="act-body">
-						<p class="act-h"><b>Java</b> — a word-frequency counter</p>
-						<ul class="trace">
-							<li><span class="type">Request</span><p class="what">Count word frequencies in a string and print the three most common words.</p></li>
-							<li><span class="type">Produced</span><p class="what"><code>WordFrequency.java</code>, 27 lines — compiled with <code>javac</code>, then run.</p></li>
-							<li><span class="type recall">Ran</span><p class="what"><code>This: 2</code></p></li>
-						</ul>
-					</div>
+				<div class="card">
+					<h3>Analysis</h3>
+					<p>A question about existing code is answered from the code; a question about the project's own history is answered from its memory, with no file access. Recorded dead-ends are surfaced as warnings when a question touches one.</p>
 				</div>
-
-				<div class="act-row solo">
-					<div class="act-body">
-						<p class="act-h"><b>Python</b> — a self-playing guessing game</p>
-						<ul class="trace">
-							<li><span class="type">Request</span><p class="what">Play a number-guessing game against itself using binary search, and print each guess.</p></li>
-							<li><span class="type">Produced</span><p class="what"><code>number_guessing_game.py</code>, 16 lines.</p></li>
-							<li><span class="type recall">Ran</span><p class="what"><code>Guess: 50</code> — the first step of the search, then the rest of the sequence.</p></li>
-						</ul>
-					</div>
+				<div class="card">
+					<h3>Planning</h3>
+					<p>Forward-looking commitments are recorded as plans and kept even when they restate known facts, since a plan about a project naturally resembles it. Standing rules are held in the reflex layer and applied every turn.</p>
 				</div>
 			</div>
 
@@ -292,15 +257,93 @@
 		</div>
 	</section>
 
+	<section id="journey">
+		<div class="wrap">
+			<p class="eyebrow">A session</p>
+			<h2>Designing a small game, then asking the project what it decided.</h2>
+			<p class="dim measure" style="margin-bottom:8px">What follows is one continuous session on a fresh install, from first launch to the end of the day. The prompts are typed as written; the replies are the replies that came back. Nothing here was staged, and the memory it describes is the one this session produced.</p>
+
+			<div class="arc">
+				<div class="act-row">
+					<div class="act-body">
+						<p class="act-h">First launch</p>
+						<ul class="trace">
+							<li><span class="type">Install</span><p class="what">The editor opens with no models on disk. A notification offers them; declining leaves everything except the offline agent working, and the offer returns next launch.</p></li>
+							<li><span class="type recall">Accept</span><p class="what">Roughly five and a half gigabytes are fetched into the install directory, resuming where an interrupted transfer left off. On the machine this was written on it took a little under five minutes.</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="act-row rev">
+					<div class="act-body">
+						<p class="act-h">Framing the project</p>
+						<ul class="trace">
+							<li><span class="type">You type</span><p class="what">We're building a small terminal game in Python called The Labyrinth — single file, no dependencies. The player walks through connected rooms looking for the exit.</p></li>
+							<li><span class="type">You type</span><p class="what">Open question: should rooms be plain dictionaries or proper classes?</p></li>
+							<li><span class="type recall">Recorded</span><p class="what">The project frame and the open question are written into the project's memory as they are said, typed as what they are — an open question stays open until something settles it.</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="act-row">
+					<div class="act-body">
+						<p class="act-h">A decision, and the reason for it</p>
+						<ul class="trace">
+							<li><span class="type">You type</span><p class="what">Let's debate the map itself: a hand-crafted fixed maze versus a procedurally generated one.</p></li>
+							<li><span class="type">You type</span><p class="what">Decision: go with a hand-crafted maze for v1 — it's testable and we can tune the feel. Procedural can come later.</p></li>
+							<li><span class="type recall">Recorded</span><p class="what">The decision is linked to the question it answers, so the reasoning travels with it rather than being stored as a bare verdict.</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="act-row rev">
+					<div class="act-body">
+						<p class="act-h">A failure, and the rule that came out of it</p>
+						<ul class="trace">
+							<li><span class="type">You type</span><p class="what">Heads up: I earlier tried keeping the player position and room state in module-level globals and it caused nasty state bugs across functions. That approach is a dead end.</p></li>
+							<li><span class="type">You type</span><p class="what">So let's make it a rule: always keep the whole game state in one dict passed around explicitly — never module globals.</p></li>
+							<li><span class="type recall">What changed</span><p class="what">The code written after this point threads the state through explicitly. Where a move had taken a direction and reached for whatever was in scope, it now takes the game state as an argument and reads the rooms out of it. The rule was not repeated in any later prompt.</p></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="act-row">
+					<div class="act-body">
+						<p class="act-h">Later, asking the project about itself</p>
+						<ul class="trace">
+							<li><span class="type">You ask</span><p class="what">Why did we go with a hand-crafted maze again?</p></li>
+							<li><span class="type recall">It answers</span><p class="what">The decision to go with a hand-crafted maze was based on the observation that the hand-crafted fixed maze was testable and we could tune the feel.</p></li>
+							<li><span class="type">You ask</span><p class="what">Remind me — is it okay to keep game state in globals?</p></li>
+							<li><span class="type recall">It answers</span><p class="what">No, it is not okay to keep game state in globals — and it quotes the reason that was recorded, that module-level globals for the player position and room state caused state bugs across functions.</p></li>
+							<li><span class="type">You ask</span><p class="what">What did we decide today?</p></li>
+							<li><span class="type recall">It answers</span><p class="what">We decided to go with a hand-crafted maze for v1 — it's testable and we can tune the feel.</p></li>
+							<li><span class="type">You ask</span><p class="what">What's our rule about dependencies?</p></li>
+							<li><span class="type recall">It answers</span><p class="what">The rule about dependencies is that this project should always have zero dependencies.</p></li>
+						</ul>
+					</div>
+					<figure class="act-figure">
+						<div class="shot"><img src="https://cdn.jsdelivr.net/gh/neonmem-lab/neonmem-app@main/assets/workspace/session-recall.png" width="1440" height="900" loading="lazy" alt="The agent panel answering &quot;What's our rule about dependencies?&quot; with the rule the session recorded earlier."></div>
+						<figcaption class="shot-cap"><b>The last question of the session.</b> The answer comes from the project's memory; the model runs locally, offline.</figcaption>
+					</figure>
+				</div>
+			</div>
+
+			<p class="dim measure" style="margin-top:34px">None of those four answers is in any file. They are in the project's memory because the session put them there, and the questions are routed to it rather than to the code: a question about the project's own record never opens a file. The recorded dead-end is the one that matters most — it comes back as a refusal with its reason attached, which is the difference between a memory and a log.</p>
+
+			<h3 style="margin:52px 0 14px; font-size:18px">What this session does not show</h3>
+			<p class="dim measure">The model is a small one running on a laptop, and it behaves like it. Asked to plan without writing code, it wrote code anyway on the following turn, and it engages poorly with an open-ended design debate — it would rather produce a file than argue. The memory is what improved across the session; the model did not become a better designer because of it. What changed is that the decisions, the failure and the rules survived, applied themselves to later code, and could be asked about afterwards.</p>
+		</div>
+	</section>
+
 	<section id="download">
 		<div class="wrap">
 			<p class="eyebrow">Download</p>
 			<h2>Neonmem Workspace for Windows.</h2>
 			<p class="dim measure">Two ways to run it, both carrying the editor, the memory engine, and the embedding model. The installer sets it up on your PC; the portable build unzips and runs from a folder — nothing added to your system, keep it on a drive and take it with you.</p>
 			<div class="dl">
-				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.3/neonmem-workspace-1.2.3-Setup.exe">Download for Windows</a>
-				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.3/neonmem-workspace-1.2.3-portable-win32-x64.zip">Portable — no install</a>
-				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v1.2.3">Release notes</a>
+				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.4/neonmem-workspace-1.2.4-Setup.exe">Download for Windows</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.4/neonmem-workspace-1.2.4-portable-win32-x64.zip">Portable — no install</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v1.2.4">Release notes</a>
 			</div>
 			<div class="soon"><span>Linux — coming</span><span>SDK — coming</span></div>
 		</div>
