@@ -188,7 +188,7 @@
 				</div>
 				<div class="card">
 					<h3>Integrity</h3>
-					<p>Node text is stored in an LZ4-compressed string table; a footer carries a per-section CRC32 and a content hash. The vectors are part of the file — there is no external database.</p>
+					<p>Node text is stored in an LZ4-compressed string table; a footer carries a per-section CRC32 and a content hash. The vectors are part of the file, so the cartridge is the whole store.</p>
 				</div>
 			</div>
 
@@ -225,20 +225,20 @@
 		<div class="wrap">
 			<p class="eyebrow">What the agent does</p>
 			<h2>Generation, retrieval, analysis and planning, on local models.</h2>
-			<p class="dim measure">All four run against the models shipped inside the editor. Nothing is sent anywhere.</p>
+			<p class="dim measure">All four run against the models shipped inside the editor, on the machine in front of you.</p>
 
 			<div class="cols" style="margin-top:28px">
 				<div class="card">
 					<h3>Code generation</h3>
-					<p>A turn produces files in the project, not a suggestion to copy. Whole-file writes carry the current contents; adding a method to an existing class generates the method alone and inserts it. Markup, configuration and data formats are written the same way as source.</p>
+					<p>A turn writes files into the project. Whole-file writes carry the current contents; adding a method to an existing class generates the method alone and inserts it. Markup, configuration and data formats are written the same way as source.</p>
 				</div>
 				<div class="card">
 					<h3>Retrieval-augmented grounding</h3>
-					<p>Each turn embeds the request and recalls from the project's cartridge before the model runs. What is retrieved is reduced to a contract — declarations, annotations and query-scored lines under a token budget — rather than whole files, so it informs the answer without displacing it.</p>
+					<p>Each turn embeds the request and recalls from the project's cartridge before the model runs. What is retrieved is reduced to a contract — declarations, annotations and query-scored lines under a token budget — rather than whole files, so the request itself stays the larger part of the context.</p>
 				</div>
 				<div class="card">
 					<h3>Analysis</h3>
-					<p>A question about existing code is answered from the code; a question about the project's own history is answered from its memory, with no file access. Recorded dead-ends are surfaced as warnings when a question touches one.</p>
+					<p>A question about existing code is answered from the code; a question about the project's own history is answered from its memory alone. Recorded dead-ends are surfaced as warnings when a question touches one.</p>
 				</div>
 				<div class="card">
 					<h3>Planning</h3>
@@ -261,14 +261,14 @@
 		<div class="wrap">
 			<p class="eyebrow">A session</p>
 			<h2>Designing a small game, then asking the project what it decided.</h2>
-			<p class="dim measure" style="margin-bottom:8px">What follows is one continuous session on a fresh install, from first launch to the end of the day. The prompts are typed as written; the replies are the replies that came back. Nothing here was staged, and the memory it describes is the one this session produced.</p>
+			<p class="dim measure" style="margin-bottom:8px">What follows is one continuous session on a fresh install, from first launch to the end of the day. The prompts are typed as written; the replies are the replies that came back. Every prompt and reply here is from that session, and the memory it describes is the one it produced.</p>
 
 			<div class="arc">
 				<div class="act-row">
 					<div class="act-body">
 						<p class="act-h">First launch</p>
 						<ul class="trace">
-							<li><span class="type">Install</span><p class="what">The editor opens with no models on disk. A notification offers them; declining leaves everything except the offline agent working, and the offer returns next launch.</p></li>
+							<li><span class="type">Install</span><p class="what">The editor opens before any model is on disk. A notification offers them; declining leaves everything except the offline agent working, and the offer returns next launch.</p></li>
 							<li><span class="type recall">Accept</span><p class="what">Roughly five and a half gigabytes are fetched into the install directory, resuming where an interrupted transfer left off. On the machine this was written on it took a little under five minutes.</p></li>
 						</ul>
 					</div>
@@ -302,7 +302,7 @@
 						<ul class="trace">
 							<li><span class="type">You type</span><p class="what">Heads up: I earlier tried keeping the player position and room state in module-level globals and it caused nasty state bugs across functions. That approach is a dead end.</p></li>
 							<li><span class="type">You type</span><p class="what">So let's make it a rule: always keep the whole game state in one dict passed around explicitly — never module globals.</p></li>
-							<li><span class="type recall">What changed</span><p class="what">The code written after this point threads the state through explicitly. Where a move had taken a direction and reached for whatever was in scope, it now takes the game state as an argument and reads the rooms out of it. The rule was not repeated in any later prompt.</p></li>
+							<li><span class="type recall">What changed</span><p class="what">The code written after this point threads the state through explicitly. Where a move had taken a direction and reached for whatever was in scope, it now takes the game state as an argument and reads the rooms out of it. The rule applied on every later turn from memory alone.</p></li>
 						</ul>
 					</div>
 				</div>
@@ -328,7 +328,7 @@
 				</div>
 			</div>
 
-			<p class="dim measure" style="margin-top:34px">None of those four answers is in any file. They are in the project's memory because the session put them there, and the questions are routed to it rather than to the code: a question about the project's own record never opens a file. The recorded dead-end is the one that matters most — it comes back as a refusal with its reason attached, which is the difference between a memory and a log.</p>
+			<p class="dim measure" style="margin-top:34px">All four answers come from the project's memory, because the session put them there. A question about the project's own record is routed to the memory and answered from it alone. The recorded dead-end is the one that matters most — it comes back as a refusal with its reason attached, which is the difference between a memory and a log.</p>
 
 		</div>
 	</section>
@@ -337,10 +337,10 @@
 		<div class="wrap">
 			<p class="eyebrow">Download</p>
 			<h2>Neonmem Workspace for Windows.</h2>
-			<p class="dim measure">Two ways to run it, both carrying the editor, the memory engine, and the embedding model. The installer sets it up on your PC; the portable build unzips and runs from a folder — nothing added to your system, keep it on a drive and take it with you.</p>
+			<p class="dim measure">Two ways to run it, both carrying the editor, the memory engine, and the embedding model. The installer sets it up on your PC; the portable build unzips and runs from its own folder, so keep it on a drive and take it with you.</p>
 			<div class="dl">
 				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.9/neonmem-workspace-1.2.9-Setup.exe">Download for Windows</a>
-				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.9/neonmem-workspace-1.2.9-portable-win32-x64.zip">Portable — no install</a>
+				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/download/v1.2.9/neonmem-workspace-1.2.9-portable-win32-x64.zip">Portable — unzip and run</a>
 				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/v1.2.9">Release notes</a>
 			</div>
 			<div class="soon"><span>Linux — coming</span><span>SDK — coming</span></div>

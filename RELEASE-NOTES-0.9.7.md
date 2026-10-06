@@ -10,7 +10,7 @@ Neonmem now understands that "your stuff" comes in two shapes, and treats each c
 - **Links become knowledge.** If a chat references a file on disk, that file is pulled into the pool automatically, with a memory that points back to it.
 
 ## Grounded, offline recall
-- **IBM Granite-30M embeddings** run as fused **fp16 ONNX** through **ONNX Runtime** — Qdrant-class retrieval quality, on **any CPU**, with **no GPU, no PyTorch, no API key, no cloud**.
+- **IBM Granite-30M embeddings** run as fused **fp16 ONNX** through **ONNX Runtime** — Qdrant-class retrieval quality on **any CPU**, through **ONNX Runtime alone**.
 - Every prompt checks memory in order — reflexes → short-term → long-term → facts pool — so the agent answers from what you imported, or honestly says it doesn't know.
 - **Concept tags that stick.** Tag an import with a topic (e.g. `Site API`) and Neonmem mints one clean, canonical memory linked to the source — even when your docs never name it verbatim.
 

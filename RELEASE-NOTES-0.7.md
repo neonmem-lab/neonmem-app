@@ -14,8 +14,8 @@ it think in 3D.
 - **Dreams** — a consolidation pass that decays noise, merges duplicates, and
   promotes what matters.
 - **Time-travel recall** — "what did we do three days ago?"
-- **Local & private** — offline embeddings, no cloud, no API cost; memory is a
-  portable file on your machine.
+- **Local & private** — embeddings run offline on your own machine, and memory is a
+  portable file that stays there.
 - **Tamper-proof memory** — binary and agent-write-only by design.
 - **Native Windows installer** — Start-menu icons, PATH, clean uninstaller.
 - **Safety** — an emergency **disable** switch (`neonmem disable`) and local logs

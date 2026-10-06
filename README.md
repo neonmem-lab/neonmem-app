@@ -36,7 +36,7 @@ Text is embedded with the IBM Granite-30M embedding model, exported to fp16 ONNX
 
 ### Similarity search
 
-Recall is exact cosine over the L2-normalized vectors — equivalent to inner-product (`IndexFlatIP`) — returning the top-k nearest nodes for a query. There is no approximate index and no external vector database; the vectors are part of the cartridge.
+Recall is exact cosine over the L2-normalized vectors — equivalent to inner-product (`IndexFlatIP`) — returning the top-k nearest nodes for a query. Every vector is in the cartridge, and the search reads them directly.
 
 ### Energy-based capture
 

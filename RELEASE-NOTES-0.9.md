@@ -27,17 +27,17 @@ memory consolidates (`dream`) or when you ingest docs, and it travels inside the
 A new **PLAN** node type captures intent: immediate next-steps and long-running goals. So your
 agent knows not just what happened and *why*, but the **direction**. Active plans resist
 fading; when a plan is achieved, replaced, or abandoned it settles cleanly into the record
-(a win, a superseded note, or a dead-end) — never lost, never confused.
+(a win, a superseded note, or a dead-end) — each kept as what it is.
 
-### 🤖 Small models, built in — no third-party LLM
+### 🤖 Small models, built in — trained from your own memory
 Three compact, **self-built** models — trained on *your* memory — now ride inside the
 cartridge:
 - **importance** — ranks what actually matters,
 - **warmth/tone** — senses frustration and urgency so corrections stick,
 - **capture-typing** — types what's worth remembering as you work.
 
-They generalise beyond hand-written rules, stay fully **offline**, and use **no third-party
-LLM** — your project never leaves your machine.
+They generalise beyond hand-written rules, run fully **offline** on **models that ship with
+the editor**, and keep your project on your machine.
 
 ### 🌌 Living brain visualization
 Every memory renders as an anatomical brain — two hemispheres around a bright reflex core —
@@ -53,14 +53,14 @@ Point Neonmem at your docs and code and it gathers the important facts **and now
 ## Also
 
 - **Signed installer & app** — the installer and app executables are now code-signed.
-- Offline and private throughout — no cloud calls, no API cost.
+- Offline throughout: embeddings, recall and generation all run locally.
 - Quality: **461 automated tests** (engine, comprehension, models, the built exe, MCP over
   stdio, and full Electron install/launch smoke tests) pass on this build.
 
 ## Install
 
 Download **Neonmem-Setup-0.9.0.exe** (Windows x64) and run it, or grab the
-**neonmem-0.9.0-portable.tar.gz** for locked-down PCs (no installer, no SmartScreen prompt).
+**neonmem-0.9.0-portable.tar.gz** for locked-down PCs (unzip and run, so SmartScreen stays quiet).
 Works with **Claude Code** (full: session-start load + passive capture) and **GitHub Copilot /
 VS Code** (experimental).
 

@@ -13,7 +13,7 @@ the error was the last thing a first-time user saw.
 
 The check itself was left over from an earlier design and no longer describes what ships. It warned that the
 agent, memory-aware prompts and completions "will NOT work until Claude is set up" — untrue for some time
-now: the agent is a local model that requires no account, no key and no network. So the check is gone rather
+now: the agent is a local model that runs on the machine as installed. So the check is gone rather
 than repaired, and with it a warning that was both broken and wrong.
 
 It survived three releases because it exits early during a silent install, which is how an automated test

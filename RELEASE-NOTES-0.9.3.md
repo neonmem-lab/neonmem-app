@@ -1,6 +1,6 @@
 # Neonmem v0.9.3
 
-**Big memories load smoothly — even on machines with no GPU.**
+**Big memories load smoothly, on the CPU alone.**
 
 A performance release for working with large memories (e.g. a whole folder of
 product docs imported into one project):

@@ -10,9 +10,9 @@
 - **Connections render reliably** — memories show their links, including across
   tiers.
 - **Cleaner subsystem names** — the brain labels its self-organised subsystems
-  with readable names, not raw code signatures.
-- **Now on Linux.** An **AppImage** (just download, `chmod +x`, run — no install,
-  no gatekeeper prompt) plus a `.tar.gz`, alongside the Windows installer and
+  with readable names in place of raw code signatures.
+- **Now on Linux.** An **AppImage** (download, `chmod +x`, run — it executes as it is,
+  so the gatekeeper stays quiet) plus a `.tar.gz`, alongside the Windows installer and
   portable build.
 
 Offline, local, private. Free for personal, hobby, research and nonprofit use.

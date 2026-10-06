@@ -81,4 +81,4 @@ change generation state; repeated runs of the same build reproduce.
 Windows x64. The installer is unsigned, so SmartScreen will warn on first run.
 
 The download is about 547 MB. The language models (approximately 5.5 GB) are fetched on first launch, once,
-after an explicit prompt; nothing is downloaded without consent and nothing is sent to any server.
+after an explicit prompt; the download waits for that consent, and the work stays on the machine.
