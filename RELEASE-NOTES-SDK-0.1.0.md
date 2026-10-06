@@ -30,5 +30,7 @@ consolidation happen inside it.
 
 ---
 
-Requires Node 20 or newer. The embedding model (about 121 MB) is fetched on first use into
-`~/.neonmem/models`, or supplied with `NEONMEM_MODEL_DIR`. Licensed PolyForm Noncommercial 1.0.0.
+Install the downloaded tarball with `npm install -g ./neonmem-core-0.1.0.tgz`, which puts `neonmem` and
+`neonmem-mcp` on your PATH. Requires Node 20 or newer. The embedding model (about 121 MB) is fetched on
+first use into `~/.neonmem/models`, or supplied with `NEONMEM_MODEL_DIR`. Licensed PolyForm Noncommercial
+1.0.0.

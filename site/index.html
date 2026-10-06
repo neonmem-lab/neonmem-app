@@ -353,9 +353,9 @@
 			<h2>The memory subsystem, as a package.</h2>
 			<p class="dim measure">A <b>.neonmem</b> file holds a project's memories, the typed links between them, their vectors and every passage imported into it. <b>@neonmem/core</b> serves that file to any agent over MCP, and carries a command line for building one. Embedding, search, ranking, decay and consolidation happen inside the file; the API above it answers questions.</p>
 			<div class="spec" style="margin-top:22px">
-<span class="k">mcp</span>   npx -y -p @neonmem/core neonmem-mcp &lt;project&gt; &nbsp;·&nbsp; <span class="k">cli</span> neonmem init · import · ask &nbsp;·&nbsp; <span class="k">node</span> 20+
+<span class="k">install</span>   npm i -g ./neonmem-core-0.1.0.tgz &nbsp;·&nbsp; <span class="k">mcp</span> neonmem-mcp &lt;project&gt; &nbsp;·&nbsp; <span class="k">cli</span> neonmem init · import · ask &nbsp;·&nbsp; <span class="k">node</span> 20+
 			</div>
-			<p class="dim measure" style="margin-top:22px">On connect the agent is told the order to consult memory in, and which part is the project's own record rather than a passage quoted from a document. A cartridge can declare what it is and introduce itself, and an agent can load one by path or URL while it runs. The embedding model is fetched once per machine on first use.</p>
+			<p class="dim measure" style="margin-top:22px">Install the saved file with npm and both commands land on your PATH. On connect the agent is told the order to consult memory in, and which part is the project's own record rather than a passage quoted from a document. A cartridge can declare what it is and introduce itself, and an agent can load one by path or URL while it runs. The embedding model is fetched once per machine on first use.</p>
 			<div class="dl">
 				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/sdk-v0.1.0/neonmem-core-0.1.0.tgz">Save the SDK — 169 KB</a>
 				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/sdk-v0.1.0">Release notes</a>
