@@ -351,16 +351,36 @@
 		<div class="wrap">
 			<p class="eyebrow">Neonmem SDK</p>
 			<h2>The memory subsystem, as a package.</h2>
-			<p class="dim measure">A <b>.neonmem</b> file holds a project's memories, the typed links between them, their vectors and every passage imported into it. <b>@neonmem/core</b> serves that file to any agent over MCP, and carries a command line for building one. Embedding, search, ranking, decay and consolidation happen inside the file; the API above it answers questions.</p>
+			<p class="lead">A <b>.neonmem</b> file is the memory an agent talks to. <b>@neonmem/core</b> serves that file over MCP to any client that speaks it, and carries a command line for building one.</p>
+			<p class="dim measure">The file holds a project’s memories, the typed links between them, their int8 vectors, and every passage imported into it. Embedding, search, ranking, decay and consolidation happen inside; the API above answers questions — what the project recorded, whether it already ruled this out, and the grounding for a task fitted to a token budget. One file carries all of it, so copying the file copies the memory.</p>
+
+			<h3 style="margin:44px 0 14px; font-size:18px">How to use it</h3>
+			<ul class="tiers">
+				<li><span class="t">save</span><span class="d">Download the tarball from the releases page — about 170 KB.</span></li>
+				<li><span class="t">install</span><span class="d">Install it from the file with npm. That puts two commands on your PATH: <b>neonmem</b> and <b>neonmem-mcp</b>. Node 20 or newer.</span></li>
+				<li><span class="t">connect</span><span class="d">Add the server to any MCP client’s config. The argument is a project directory, whose memory lives in its <b>.neonmem</b> folder, or a cartridge file named directly.</span></li>
+				<li><span class="t">build one</span><span class="d">Or create a memory yourself and fill it: read in documents and code, record decisions and the reasons for them, then ask it questions.</span></li>
+			</ul>
+
 			<div class="spec" style="margin-top:22px">
-<span class="k">install</span>   npm i -g ./neonmem-core-0.1.0.tgz &nbsp;·&nbsp; <span class="k">mcp</span> neonmem-mcp &lt;project&gt; &nbsp;·&nbsp; <span class="k">cli</span> neonmem init · import · ask &nbsp;·&nbsp; <span class="k">node</span> 20+
+npm install -g ./neonmem-core-0.1.0.tgz
+
+<span class="k">mcp</span>   "memory": { "command": "neonmem-mcp", "args": ["/path/to/your/project"] }
+
+<span class="k">cli</span>   neonmem init . --name "the ops runbook"
+      neonmem import ./docs --topics tenancy,authentication
+      neonmem decided "staging deploys go through the gateway" --because "rate limits are enforced there"
+      neonmem ask "which tenant does staging use?"
 			</div>
-			<p class="dim measure" style="margin-top:22px">Install the saved file with npm and both commands land on your PATH. On connect the agent is told the order to consult memory in, and which part is the project's own record rather than a passage quoted from a document. A cartridge can declare what it is and introduce itself, and an agent can load one by path or URL while it runs. The embedding model is fetched once per machine on first use.</p>
+
+			<p class="dim measure" style="margin-top:22px">On connect the agent is told the order to consult the memory in, and which part is the project’s own record rather than a passage quoted from a document it imported. A cartridge can declare what it is and introduce itself by that, and an agent can load one by path or URL while it runs. The embedding model is fetched once per machine on first use.</p>
+			<p class="dim measure">Every command takes <b>--json</b> for output meant to be parsed, and reports progress separately from results, so piping stays safe. The same engine runs inside Neonmem Workspace.</p>
+
 			<div class="dl">
 				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/sdk-v0.1.0/neonmem-core-0.1.0.tgz">Save the SDK — 169 KB</a>
 				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/sdk-v0.1.0">Release notes</a>
 			</div>
-			<div class="soon"><span>PolyForm Noncommercial 1.0.0</span></div>
+			<div class="soon"><span>PolyForm Noncommercial 1.0.0</span><span>node 20+</span></div>
 		</div>
 	</section>
 </main>
