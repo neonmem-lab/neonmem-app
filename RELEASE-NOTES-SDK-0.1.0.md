@@ -14,6 +14,9 @@ consolidation happen inside it.
 - The embedding model is fetched once per machine on first use; `NEONMEM_OFFLINE=1` declines and states how to supply one.
 - The facts layer is stored in the file's FACT section, read and written byte-compatibly with the Python engine in both directions.
 - An answer-level API: `ask`, `brief`, `remember`, `decided`, `failed`, `alwaysDo`, `describe`, `rules`, `health`. Every value crossing it is text, a score or a count.
+- Ships as a portable folder: the runtime, the engine and the native libraries are inside the archive, so unzipping it is the whole installation.
+- `neonmem mcp-config <project>` resolves this copy's own paths and prints the client configuration, or merges it into the project's `.mcp.json` with `--write`.
+- `NEONMEM_HOME` decides where downloads land. The unzipped archive points it at its own folder, so the model and any fetched cartridges stay with the SDK and deleting the folder removes them.
 
 ## Changed
 - Recall combines meaning and words, so a rule whose point is one rare term is found by that term.
@@ -30,7 +33,7 @@ consolidation happen inside it.
 
 ---
 
-Install the downloaded tarball with `npm install -g ./neonmem-core-0.1.0.tgz`, which puts `neonmem` and
-`neonmem-mcp` on your PATH. Requires Node 20 or newer. The embedding model (about 121 MB) is fetched on
-first use into `~/.neonmem/models`, or supplied with `NEONMEM_MODEL_DIR`. Licensed PolyForm Noncommercial
-1.0.0.
+Windows x64, 61 MB zipped and 154 MB unpacked. Unzip anywhere and run `neonmem` or `neonmem-mcp` from the
+folder — the runtime is inside, nothing is installed, and nothing is added to PATH. The embedding model
+(about 121 MB) is fetched on first use into the folder, or supplied with `NEONMEM_MODEL_DIR`; set
+`NEONMEM_OFFLINE=1` to keep it off the network. Licensed PolyForm Noncommercial 1.0.0.

@@ -356,16 +356,16 @@
 
 			<h3 style="margin:44px 0 14px; font-size:18px">How to use it</h3>
 			<ul class="tiers">
-				<li><span class="t">save</span><span class="d">Download the tarball from the releases page — about 170 KB.</span></li>
-				<li><span class="t">install</span><span class="d">Install it from the file with npm. That puts two commands on your PATH: <b>neonmem</b> and <b>neonmem-mcp</b>. Node 20 or newer.</span></li>
-				<li><span class="t">connect</span><span class="d">Add the server to any MCP client’s config. The argument is a project directory, whose memory lives in its <b>.neonmem</b> folder, or a cartridge file named directly.</span></li>
+				<li><span class="t">save</span><span class="d">Download the archive from the releases page — 61 MB, Windows x64.</span></li>
+				<li><span class="t">unzip</span><span class="d">Unzip it anywhere. The runtime is inside, so there is nothing to install, nothing added to PATH, and nothing left behind when the folder is deleted.</span></li>
+				<li><span class="t">connect</span><span class="d">Run <b>neonmem mcp-config</b> and the folder emits its own client configuration, paths already resolved. The argument is a project directory, whose memory lives in its <b>.neonmem</b> folder, or a cartridge file named directly.</span></li>
 				<li><span class="t">build one</span><span class="d">Or create a memory yourself and fill it: read in documents and code, record decisions and the reasons for them, then ask it questions.</span></li>
 			</ul>
 
 			<div class="spec" style="margin-top:22px">
-npm install -g ./neonmem-core-0.1.0.tgz
+<span class="k">unzip</span>   neonmem-sdk-0.1.0-win32-x64.zip   &nbsp;·&nbsp;   nothing installed, nothing on PATH
 
-<span class="k">mcp</span>   "memory": { "command": "neonmem-mcp", "args": ["/path/to/your/project"] }
+<span class="k">mcp</span>   neonmem mcp-config &lt;project&gt;   &nbsp;·&nbsp;   emits the client config, paths resolved
 
 <span class="k">cli</span>   neonmem init . --name "the ops runbook"
       neonmem import ./docs --topics tenancy,authentication
@@ -377,10 +377,10 @@ npm install -g ./neonmem-core-0.1.0.tgz
 			<p class="dim measure">Every command takes <b>--json</b> for output meant to be parsed, and reports progress separately from results, so piping stays safe. The same engine runs inside Neonmem Workspace.</p>
 
 			<div class="dl">
-				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/sdk-v0.1.0/neonmem-core-0.1.0.tgz">Download SDK</a>
+				<a class="btn" href="https://github.com/neonmem-lab/neonmem-app/releases/download/sdk-v0.1.0/neonmem-sdk-0.1.0-win32-x64.zip">Download SDK</a>
 				<a class="btn ghost" href="https://github.com/neonmem-lab/neonmem-app/releases/tag/sdk-v0.1.0">Release notes</a>
 			</div>
-			<div class="soon"><span>PolyForm Noncommercial 1.0.0</span><span>node 20+</span></div>
+			<div class="soon"><span>PolyForm Noncommercial 1.0.0</span><span>windows x64</span><span>runtime included</span></div>
 		</div>
 	</section>
 </main>
